@@ -1,3 +1,6 @@
+$casual-blue: #195584;
+$casual-gold: #a79479;
+
 html {
     background: image-url("background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -13,4 +16,23 @@ html {
 
 body {
     margin: 0;
+}
+
+h1 span.classy {
+    font-family: "Tangerine", cursive;
+    font-size: 2em;
+}
+
+.blue {
+    color: $casual-blue;
+}
+
+.gold {
+    color: $casual-gold;
+}
+
+h1 {
+    font-family: "Acme", sans-serif;
+    font-size: 2.25em;
+    margin: 0.25em 0;
 }
