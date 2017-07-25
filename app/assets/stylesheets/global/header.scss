@@ -1,3 +1,7 @@
+.mobile-nav {
+    display: none;
+}
+
 .menu-btn {
     display: none;
 }
@@ -76,7 +80,7 @@
     }
 
     .mobile-nav.opened {
-	max-height: 5em;
+	max-height: 20em;
     }
    
     .desktop-nav {
