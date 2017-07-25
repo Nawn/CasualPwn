@@ -5,3 +5,36 @@
 .header__logo img {
     margin: 0.25em 0;
 }
+
+.header__navbar {
+
+    nav {
+	margin-top: 1.75em;
+    }
+    
+    ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+    }
+
+    li {
+	float: right;
+    }
+
+    li a {
+	display: block;
+	text-align: center;
+	padding: 0.85em 1em;
+	text-decoration: none;
+    }
+
+    li a:hover {
+	background-color: rgba(0,0,0,0.9);
+    }
+
+    li a.pure-button:hover {
+	background-color: $casual-gold;
+    }
+}

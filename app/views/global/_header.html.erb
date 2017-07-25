@@ -1,3 +1,11 @@
+<% header_links = [] %>
+
+<% header_links << ["Home", "#"] %>
+<% header_links << ["About", "#"] %>
+<% header_links << ["Members", "#"] %>
+<% header_links << ["Events/LFG", "#"] %>
+<% header_links << ["Apply", "#"] %>
+
 <header>
   <section class="header__container">
     <div class="center pure-g">
@@ -7,8 +15,15 @@
       <section class="pure-u-1-4 header__title">
 	<h1 class="gold"><span class="classy blue">Casual</span>Pwnography</h1>
       </section>
-      <section class="pure-u-2-3">
-	
+      <section class="pure-u-2-3 header__navbar">
+	<nav>
+	  <ul>
+	    <li><%= link_to "Sign In", "#", class: "pure-button" %></li>
+	    <% header_links.reverse.each do |array| %>
+	      <li><%= link_to array[0], array[1], class: "gold" %></li>
+	    <% end %>
+	  </ul>
+	</nav>
       </section>       
     </div>
   </section>
