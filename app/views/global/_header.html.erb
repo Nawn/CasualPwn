@@ -33,6 +33,14 @@
 	    <% end %>
 	  </ul>
 	</nav>
+	<nav class="mobile-nav">
+	  <ul class="menu">
+	    <li><%= link_to "Sign In", "#", class: "pure-button" %></li>
+	    <% header_links.reverse.each do |array| %>
+	      <li><%= link_to array[0], array[1], class: "gold" %></li>
+	    <% end %>
+	  </ul>
+	</nav>
       </section>       
     </div>
   </section>

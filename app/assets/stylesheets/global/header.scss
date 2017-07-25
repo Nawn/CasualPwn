@@ -1,3 +1,7 @@
+.menu-btn {
+    display: none;
+}
+
 .mobile-title {
     display: none;
 }
@@ -51,8 +55,30 @@
 
 @media screen and (max-width: 35.5em) {
 
-    
-    
+    .menu-btn {
+	display: block;
+	position: fixed;
+	top: 1em;
+	right: 1em;
+	color: $casual-gold;
+	cursor: pointer;
+    }
+
+    .mobile-nav {
+	transition: max-height 0.3s ease;
+	display: block;
+	max-height: 0em;
+	overflow: hidden;
+
+	li {
+	    float: initial;
+	}
+    }
+
+    .mobile-nav.opened {
+	max-height: 5em;
+    }
+   
     .desktop-nav {
 	display: none;
     }
