@@ -38,3 +38,9 @@
 	background-color: $casual-gold;
     }
 }
+
+@media screen and (max-width: 64em) {
+    .header__navbar nav {
+	margin: 0;
+    }
+}
