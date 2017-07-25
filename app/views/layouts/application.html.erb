@@ -6,6 +6,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!--[if lte IE 8]>
+	<link rel="stylesheet" href="<%= root_url %>css/grids-responsive-old-ie-min.css">
+	<![endif]-->
+    <!--[if gt IE 8]><!-->
+	<link rel="stylesheet" href="<%= root_url %>css/grids-responsive-min.css">
+    <!--<![endif]-->
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body class="<%= controller_name %> <%= action_name %>">
