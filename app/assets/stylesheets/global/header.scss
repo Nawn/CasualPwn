@@ -1,3 +1,7 @@
+.mobile-title {
+    display: none;
+}
+
 .header__container {
     background-color: rgba(0,0,0,0.75);
 }
@@ -42,5 +46,30 @@
 @media screen and (max-width: 64em) {
     .header__navbar nav {
 	margin: 0;
+    }
+}
+
+@media screen and (max-width: 35.5em) {
+
+    
+    
+    .desktop-nav {
+	display: none;
+    }
+
+    .desktop-title {
+	display: none;
+    }
+
+    .mobile-title {
+	display: block;
+
+	h1 {
+	    margin: 0;
+	}
+
+	h1:last-child {
+	    margin: 0em 0em 1em 0em;
+	}
     }
 }
