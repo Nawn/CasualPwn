@@ -1,0 +1,27 @@
+.aside {
+    background-color: $casual-gold;
+}
+
+.aside__section {
+    h3 {
+	margin: 0;
+	text-align: center;
+	font-family: "Acme", sans-serif;
+    }
+
+    h3:nth-child(even) {
+	font-family: "Tangerine", cursive;
+	font-size: 2em;
+    }
+}
+
+.discord__container {
+    height: 31.25em;
+
+    iframe {
+	display: block;
+	margin: 0 auto;
+	width: 85%;
+	height: 87%;
+    }
+}
