@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   scope '/user' do
-    get 'new' => 'user#prep', as: :user_new
-    get 'create' => 'user#assign_guild_user', as: :user_create
+    get 'new' => 'users#prep', as: :user_new
+    get 'create' => 'users#assign_guild_user', as: :user_create
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
