@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731035305) do
+ActiveRecord::Schema.define(version: 20170731042223) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -41,6 +41,22 @@ ActiveRecord::Schema.define(version: 20170731035305) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "guild_members", force: :cascade do |t|
+    t.string "username"
+    t.string "discord_id"
+    t.string "password_digest"
+    t.string "confirm_token"
+    t.string "guild_wars_username"
+    t.string "discord_nick"
+    t.integer "guild_rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["confirm_token"], name: "index_guild_members_on_confirm_token"
+    t.index ["discord_id"], name: "index_guild_members_on_discord_id", unique: true
+    t.index ["guild_wars_username"], name: "index_guild_members_on_guild_wars_username", unique: true
+    t.index ["username"], name: "index_guild_members_on_username"
   end
 
   create_table "users", force: :cascade do |t|
