@@ -1,4 +1,13 @@
 module ApplicationHelper
+
+  def rand_token
+    rand(36**8).to_s(36)
+  end
+
+  def auth_bot(api_key)
+    pull_from_global("bot_shared_api_key") == api_key
+  end
+  
   def pull_from_global(tag)
     result = GlobalSetting.find_by(tag: tag)
     

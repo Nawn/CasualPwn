@@ -4,8 +4,11 @@ class UsersController < ApplicationController
   def prep
     new_user_params = get_prep_user_params
 
-    if pull_from_global("bot_shared_api_key") == new_user_params[0]
-      @new_guild_member = GuildMember.create(discord_id: new_user_params[1], discord_nick: new_user_params[2], confirm_token: rand(36**8).to_s(36))
+    # Index 0 is the Bot API key
+    if auth_bot(new_user_params[0])
+      @new_guild_member = GuildMember.create(discord_id: new_user_params[1], discord_nick: new_user_params[2], confirm_token: rand_token)
+
+      render plain: "#{root_url}"
     else
       render :nothing => true, :status => :forbidden
     end
