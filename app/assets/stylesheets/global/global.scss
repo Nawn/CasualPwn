@@ -44,4 +44,9 @@ h1 {
 
 .display-left-container {
     background-color: rgba(167, 148, 121, 0.8);
+
+    h1, p {
+	padding: 0.15em 1em;
+    }
 }
+
