@@ -18,11 +18,15 @@ class UsersController < ApplicationController
   end
 
   def assign_guild_user
-    
+    @this_user = GuildMember.find_by(confirm_token: get_confirm_token_param)
   end
 
   private
   def get_prep_user_params
     params.require([:bot_key, :discord_id, :discord_nick])
+  end
+
+  def get_confirm_token_param
+    params.require(:confirm_token)
   end
 end
