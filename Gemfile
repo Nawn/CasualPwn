@@ -36,6 +36,15 @@ gem 'jbuilder', '~> 2.5'
 # Use jQuery
 gem 'jquery-rails'
 
+# Active Admin to give me an administrative backend
+gem 'activeadmin'
+
+# Plus integrations with:
+gem 'devise'
+gem 'cancancan', '~> 2.0' # or cancancan
+
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
