@@ -1,0 +1,17 @@
+<%= form_for(@this_user, url: user_assign_path(@this_user), html: {:class => "pure-form pure-form-aligned"}) do |f| %>
+<fieldset>
+  <legend>Please select the correspending Guild Wars 2 Member</legend>
+  <div class="pure-control-group">
+    <%= f.label :discord_id, "User Discord ID" %>
+    <%= f.text_field(:discord_id, disabled: 'true') %>
+  </div>
+  <div class="pure-control-group">
+    <%= f.label :discord_nick, "User Discord Nickname" %>
+    <%= f.text_field(:discord_nick, disabled: 'true') %>
+  </div>
+  <div class="pure-control-group">
+    <%= f.submit("Submit!") %>
+  </div>
+</fieldset>
+<% end %>
+
