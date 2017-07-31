@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'pages#home'
 
-  get "user/new" => "users#prep"
+  scope '/user' do
+    get 'new' => 'user#prep', as: :user_new
+    get 'create' => 'user#assign_guild_user', as: :user_create
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
