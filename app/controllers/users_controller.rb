@@ -30,6 +30,8 @@ class UsersController < ApplicationController
   end
 
   def assign_guild_user
+    # TODO: Program call to GW2 API, then compare against all Users to check which
+    #       Have not been assigned, and display those as an option for Dropdowns
     @this_user = GuildMember.find_by(confirm_token: get_confirm_token_param)
   end
 
