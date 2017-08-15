@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731042544) do
+ActiveRecord::Schema.define(version: 20170815025035) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20170731042544) do
     t.integer "guild_rank"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "registration_progress"
     t.index ["confirm_token"], name: "index_guild_members_on_confirm_token"
     t.index ["discord_id"], name: "index_guild_members_on_discord_id", unique: true
     t.index ["guild_wars_username"], name: "index_guild_members_on_guild_wars_username", unique: true
