@@ -35,12 +35,18 @@ class UsersController < ApplicationController
     begin
       @available_users = get_unassigned_users
       @this_user = GuildMember.find_by(confirm_token: get_confirm_token_param)
+
+      if @this_user.registration_progress > 0
+        flash[:alert] = "This user has already been assigned a GW2 User. Please contact an Officer to change."
+        redirect_to root_path
+      end
+
     rescue RestClient::Forbidden => @f
-      flash[:warning] = "Guild Leader API Key Incorrect, please inform an Officer"
+      flash[:alert] = "Guild Leader API Key Incorrect, please inform an Officer"
       puts "Forbidden (Maybe wrong API Key?): #{@f}"
       redirect_to root_path
     rescue RestClient::NotFound => @n
-      flash[:warning] = "Guild Leader API Key Missing, please inform an Officer"
+      flash[:alert] = "Guild Leader API Key Missing, please inform an Officer"
       puts "NotFound (Maybe missing Key?): #{@n}"
       redirect_to root_path
     end
