@@ -14,13 +14,22 @@ module GuildWars
 			@guild_id = guild_id
 			@guild_path = "guild/#{@guild_id}/"
 		end
+
+		def ranks
+			current_path = "ranks"
+			guild_call(current_path)
+		end
 		
 		# Returns an Array of Hashes containing name, rank, joined
 		def members
 			current_path = "members"
-			response = RestClient.get("#{@guild_wars_base}#{@guild_path}#{current_path}#{@access_token}")
+			guild_call(current_path)
+		end
 
-			# It's an Array of Hashes
+		private
+		def guild_call(path)
+			response = RestClient.get("#{@guild_wars_base}#{@guild_path}#{path}#{@access_token}")
+
 			JSON.parse(response.body)
 		end
 	end
