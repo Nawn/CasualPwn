@@ -1,3 +1,5 @@
+require "#{Rails.root}/lib/guild_wars_call.rb"
+
 class UsersController < ApplicationController
   include ApplicationHelper
   
@@ -32,11 +34,23 @@ class UsersController < ApplicationController
   def assign_guild_user
     # TODO: Program call to GW2 API, then compare against all Users to check which
     #       Have not been assigned, and display those as an option for Dropdowns
-    @this_user = GuildMember.find_by(confirm_token: get_confirm_token_param)
+
+    begin
+      @available_users = get_unassigned_users
+      @this_user = GuildMember.find_by(confirm_token: get_confirm_token_param)
+    rescue RestClient::Forbidden => @f
+      flash[:warning] = "Guild Leader API Key Incorrect, please inform an Officer"
+      puts "Forbidden (Maybe wrong API Key?): #{@f}"
+      redirect_to root_path
+    rescue RestClient::NotFound => @n
+      flash[:warning] = "Guild Leader API Key Missing, please inform an Officer"
+      puts "NotFound (Maybe missing Key?): #{@n}"
+      redirect_to root_path
+    end
   end
 
   def assign_guild_member
-    puts params.inspect
+    
   end
 
   private
@@ -46,5 +60,18 @@ class UsersController < ApplicationController
 
   def get_confirm_token_param
     params.require(:confirm_token)
+  end
+
+  # Returns an array of hashes.
+  # Select those guild members which do NOT match any of the website users
+  # Because guild_wars_username should be unique, not shared.
+  def get_unassigned_users
+    current_guild = GuildWars::Guild.new(pull_from_global("guild_id"), pull_from_global("guild_leader_api"))
+
+    return current_guild.members.select { |member| 
+      !GuildMember.all.any? do |website_user|
+        member['name'] == website_user.guild_wars_username
+      end
+    }
   end
 end

@@ -10,6 +10,10 @@
     <%= f.text_field(:discord_nick, disabled: 'true') %>
   </div>
   <div class="pure-control-group">
+    <%= f.label :guild_wars_username, "Guild Wars Username" %>
+    <%= f.select(:guild_wars_username, options_for_select(@available_users.map { |user| user['name'] })) %>
+  </div>
+  <div class="pure-control-group">
     <%= f.submit("Submit!") %>
   </div>
 </fieldset>
