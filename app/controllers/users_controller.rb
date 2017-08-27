@@ -49,7 +49,27 @@ class UsersController < ApplicationController
   def assign_guild_member
     # TODO: Get User Rank, and set appropriate Rank Integer & GW2Username
     # Provided by GW2 API
-    get_gw_user
+    our_guild = get_guild
+    user = get_gw_user
+    
+    guild_wars_user = our_guild.members.find do |member|
+      member['name'] == user[:guild_wars_username]
+    end
+
+    rank_int = our_guild.ranks.find do |rank|
+      rank['id'] == guild_wars_user['rank']
+    end
+
+    # rank_int['order'] is the Integer version of the rank
+    @this_user = GuildMember.find_by(discord_id: user[:discord_id])
+    @this_user.update({
+      guild_wars_username: guild_wars_user['name'],
+      guild_rank: rank_int['order'],
+      registration_progress: 1
+      })
+
+    flash[:notice] = "Success! The New User registration process link will be sent to Discord User"
+    redirect_to root_path
   end
 
   private
@@ -62,14 +82,14 @@ class UsersController < ApplicationController
   end
 
   def get_gw_user
-    return params.require(:guild_member).permit(:guild_wars_username)[:guild_wars_username]
+    return params.require(:guild_member).permit(:guild_wars_username, :discord_id, :discord_nick)
   end
 
   # Returns an array of hashes.
   # Select those guild members which do NOT match any of the website users
   # Because guild_wars_username should be unique, not shared.
   def get_unassigned_users
-    current_guild = GuildWars::Guild.new(pull_from_global("guild_id"), pull_from_global("guild_leader_api"))
+    current_guild = get_guild
 
     return current_guild.members.select { |member| 
       !GuildMember.all.any? do |website_user|

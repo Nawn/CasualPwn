@@ -3,11 +3,11 @@
   <legend>Please select the correspending Guild Wars 2 Member</legend>
   <div class="pure-control-group">
     <%= f.label :discord_id, "User Discord ID" %>
-    <%= f.text_field(:discord_id, disabled: 'true') %>
+    <%= f.text_field(:discord_id, :readonly => true) %>
   </div>
   <div class="pure-control-group">
     <%= f.label :discord_nick, "User Discord Nickname" %>
-    <%= f.text_field(:discord_nick, disabled: 'true') %>
+    <%= f.text_field(:discord_nick, :readonly => true) %>
   </div>
   <div class="pure-control-group">
     <%= f.label :guild_wars_username, "Guild Wars Username" %>
