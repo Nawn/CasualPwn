@@ -32,9 +32,6 @@ class UsersController < ApplicationController
   end
 
   def assign_guild_user
-    # TODO: Program call to GW2 API, then compare against all Users to check which
-    #       Have not been assigned, and display those as an option for Dropdowns
-
     begin
       @available_users = get_unassigned_users
       @this_user = GuildMember.find_by(confirm_token: get_confirm_token_param)
@@ -50,7 +47,9 @@ class UsersController < ApplicationController
   end
 
   def assign_guild_member
-    
+    # TODO: Get User Rank, and set appropriate Rank Integer & GW2Username
+    # Provided by GW2 API
+    get_gw_user
   end
 
   private
@@ -60,6 +59,10 @@ class UsersController < ApplicationController
 
   def get_confirm_token_param
     params.require(:confirm_token)
+  end
+
+  def get_gw_user
+    return params.require(:guild_member).permit(:guild_wars_username)[:guild_wars_username]
   end
 
   # Returns an array of hashes.
