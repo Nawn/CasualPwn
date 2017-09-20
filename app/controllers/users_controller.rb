@@ -10,17 +10,37 @@ class UsersController < ApplicationController
     if auth_bot(new_user_params[0])
       begin
         @new_guild_member = GuildMember.create(discord_id: new_user_params[1], discord_nick: new_user_params[2], confirm_token: rand_token, registration_progress: 0)
-        render plain: "#{root_url}#{user_create_path[1..-1]}?confirm_token=#{@new_guild_member.confirm_token}"
+        bot_response = {
+          'success' => 'true',
+          'message' => 'Skript has created new user! Skript will send you link to continue!',
+          'url' => "#{root_url}#{user_create_path[1..-1]}?confirm_token=#{@new_guild_member.confirm_token}"
+        }
+        render json: bot_response
       rescue ActiveRecord::RecordNotUnique => @e
         # Continue onto the next step, after checking registration progress
         @existing_guild_member = GuildMember.find_by(discord_id: new_user_params[1])
 
         if @existing_guild_member.registration_progress == 0
-          render plain: "#{root_url}#{user_create_path[1..-1]}?confirm_token=#{@existing_guild_member.confirm_token}"
+          bot_response = {
+            'success' => 'true',
+            'message' => "Hm, Skript noticed that user exist! Skript will send you link to continue!",
+            'url' => "#{root_url}#{user_create_path[1..-1]}?confirm_token=#{@existing_guild_member.confirm_token}"
+          }
+
+          render json: bot_response
         elsif @existing_guild_member.registration_progress == 1
           # At this point, the Guild wars 2 Account has already been applied, so we should send out a message to the user
           # To create a username, and a password
+          bot_response = {
+            'success' => 'false',
+            'message' => 'User already a Guild Member!. Skript will work with user to finish!',
+            'url' => 'nil'
+          }
 
+          # Send the Discord User a message to register Username/Pass 
+          # (From Rails, not through Bot JSON API, Haha)
+
+          render json: bot_response
         end
       end
     else
