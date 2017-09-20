@@ -21,10 +21,7 @@ class UsersController < ApplicationController
           # At this point, the Guild wars 2 Account has already been applied, so we should send out a message to the user
           # To create a username, and a password
 
-          
         end
-        
-        render plain: "USER EXISTS"
       end
     else
       render :nothing => true, :status => :forbidden
