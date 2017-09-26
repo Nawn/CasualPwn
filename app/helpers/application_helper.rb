@@ -1,4 +1,5 @@
 require "#{Rails.root}/lib/guild_wars_call.rb"
+require "#{Rails.root}/lib/discord_bot.rb"
 
 module ApplicationHelper
   def rand_token
@@ -22,5 +23,9 @@ module ApplicationHelper
 
   def get_guild
     GuildWars::Guild.new(pull_from_global("guild_id"), pull_from_global("guild_leader_api"))
+  end
+
+  def get_bot
+    Discord::Bot.new(pull_from_global('discord_token'), pull_from_global('discord_client').to_i)
   end
 end

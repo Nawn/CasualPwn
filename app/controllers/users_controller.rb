@@ -1,5 +1,3 @@
-require "#{Rails.root}/lib/guild_wars_call.rb"
-
 class UsersController < ApplicationController
   include ApplicationHelper
   
@@ -39,6 +37,10 @@ class UsersController < ApplicationController
 
           # Send the Discord User a message to register Username/Pass 
           # (From Rails, not through Bot JSON API, Haha)
+
+          bot = get_bot
+
+          bot.message_user(@existing_guild_member.discord_id, "`Please register your website username and password!:` #{root_url}")
 
           render json: bot_response
         end
@@ -92,6 +94,11 @@ class UsersController < ApplicationController
       })
 
     flash[:notice] = "Success! The New User registration process link will be sent to Discord User"
+
+    bot = get_bot
+
+    bot.message_user(@existing_guild_member.discord_id, "`Please register your website username and password!:` #{root_url}")
+
     redirect_to root_path
   end
 
