@@ -2,6 +2,10 @@
 <fieldset>
   <legend>Please select a Username and password</legend>
   <div class="pure-control-group">
+    <%= f.label :discord_nick, "Discord Username" %>
+    <%= f.text_field(:discord_nick, :readonly => true) %>
+  </div>
+  <div class="pure-control-group">
     <%= f.label :username, "User Name" %>
     <%= f.text_field(:username) %>
   </div>
