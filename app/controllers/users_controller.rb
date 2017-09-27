@@ -43,6 +43,15 @@ class UsersController < ApplicationController
           bot.message_user(@existing_guild_member.discord_id, "`Please register your website username and password!:` #{root_url}#{user_confirm_path[1..-1]}?confirm_token=#{@existing_guild_member.confirm_token}")
 
           render json: bot_response
+
+        elsif @existing_guild_member.registration_progress == 2
+          bot_response = {
+            'success' => 'false',
+            'message' => 'User has created account! No need! No change!',
+            'url' => 'nil'
+          }
+
+          render json: bot_response
         end
       end
     else
