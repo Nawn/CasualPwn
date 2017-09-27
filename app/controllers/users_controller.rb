@@ -90,7 +90,8 @@ class UsersController < ApplicationController
     @this_user.update({
       guild_wars_username: guild_wars_user['name'],
       guild_rank: rank_int['order'],
-      registration_progress: 1
+      registration_progress: 1,
+      confirm_token: rand_token
       })
 
     flash[:notice] = "Success! The New User registration process link will be sent to Discord User"
@@ -100,6 +101,15 @@ class UsersController < ApplicationController
     bot.message_user(@existing_guild_member.discord_id, "`Please register your website username and password!:` #{root_url}")
 
     redirect_to root_path
+  end
+
+  def confirm_login
+    @this_user = GuildMember.find_by(confirm_token: get_confirm_token_param)
+
+    if @this_user.registration_progress > 1
+      flash[:alert] = "This user has already created their Account."
+      redirect_to root_path
+    end
   end
 
   private

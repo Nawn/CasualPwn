@@ -1,0 +1,21 @@
+<%= form_for(@this_user, url: user_confirm_save_path(@this_user), html: {:class => "pure-form pure-form-aligned"}) do |f| %>
+<fieldset>
+  <legend>Please select a Username and password</legend>
+  <div class="pure-control-group">
+    <%= f.label :username, "User Name" %>
+    <%= f.text_field(:username) %>
+  </div>
+  <div class="pure-control-group">
+    <%= f.label :password, "Password" %>
+    <%= f.password_field(:password) %>
+  </div>
+  <div class="pure-control-group">
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.password_field(:password_confirmation) %>
+  </div>
+  <div class="pure-control-group">
+    <%= f.submit("Submit!") %>
+  </div>
+</fieldset>
+<% end %>
+
