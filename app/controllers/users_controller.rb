@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
           bot = get_bot
 
-          bot.message_user(@existing_guild_member.discord_id, "`Please register your website username and password!:` #{root_url}")
+          bot.message_user(@existing_guild_member.discord_id, "`Please register your website username and password!:` #{root_url}#{user_confirm_path[1..-1]}?confirm_token=#{@existing_guild_member.confirm_token}")
 
           render json: bot_response
         end
@@ -98,7 +98,7 @@ class UsersController < ApplicationController
 
     bot = get_bot
 
-    bot.message_user(@existing_guild_member.discord_id, "`Please register your website username and password!:` #{root_url}")
+    bot.message_user(@existing_guild_member.discord_id, "`Please register your website username and password!:` #{root_url}#{user_confirm_path[1..-1]}?confirm_token=#{@existing_guild_member.confirm_token}")
 
     redirect_to root_path
   end
