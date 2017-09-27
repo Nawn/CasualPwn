@@ -98,7 +98,7 @@ class UsersController < ApplicationController
 
     bot = get_bot
 
-    bot.message_user(@existing_guild_member.discord_id, "`Please register your website username and password!:` #{root_url}#{user_confirm_path[1..-1]}?confirm_token=#{@existing_guild_member.confirm_token}")
+    bot.message_user(@this_user.discord_id, "`Please register your website username and password!:` #{root_url}#{user_confirm_path[1..-1]}?confirm_token=#{@this_user.confirm_token}")
 
     redirect_to root_path
   end
@@ -110,6 +110,15 @@ class UsersController < ApplicationController
       flash[:alert] = "This user has already created their Account."
       redirect_to root_path
     end
+  end
+
+  def confirm_login_save
+    updated_info = params.require(:guild_member).permit(:username, :password, :password_confirmation)
+    @this_user = GuildMember.find(params[:id])
+    @this_user.update(updated_info)
+    @this_user.update(registration_progress: 2)
+    flash[:notice] = "Account credentials set!"
+    redirect_to root_path
   end
 
   private

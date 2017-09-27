@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'create' => 'users#assign_guild_user', as: :user_create
     patch 'create' => 'users#assign_guild_member', as: :user_assign
     get 'confirm' => 'users#confirm_login', as: :user_confirm
-    patch 'confirm' => 'users#confirm_login_save', as: :user_confirm_save
+    patch 'confirm/:id' => 'users#confirm_login_save', as: :user_confirm_save
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
