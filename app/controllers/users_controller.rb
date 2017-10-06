@@ -3,7 +3,27 @@ class UsersController < ApplicationController
   include SessionsHelper
 
   def password_update
-    
+    reset_user = GuildMember.find(session[:guild_member_id]).authenticate(params[:old_password])
+
+    if reset_user
+
+      # If the passwords match and aren't empty
+      if (params[:password] == params[:password_confirmation]) && !([params[:password], params[:password_confirmation]].any? {|this_param| this_param.empty? })
+        reset_user.password = params[:password]
+        reset_user.password_confirmation = params[:password_confirmation]
+
+        reset_user.save!
+        flash[:notice] = "Your password has been updated!"
+
+      else
+        flash[:alert] = "Passwords empty/do not match"
+      end
+
+      redirect_to password_path
+    else
+      flash[:alert] = "Old Password Incorrect!"
+      redirect_to password_path
+    end
   end
 
   def password_form
