@@ -6,4 +6,8 @@ ready = () ->
         $(".menu-btn").click(() ->
                 $(".mobile-nav").toggleClass("opened"))
 
+        $('.signin-button').click(() ->
+        	$('.sign-in-container').toggle()
+        	return false)
+
 $(document).on("turbolinks:load", ready)
