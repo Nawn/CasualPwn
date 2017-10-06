@@ -49,8 +49,7 @@
 		<div class="sign-in-container" style="display:none;">
 			<% if logged_in? %>
 				<h2 class="pwn-font">My Account</h2>
-				<%= link_to "Poopy", "#", class: 'pure-button' %>
-				<%= link_to "Caca", "#", class: 'pure-button' %>
+				<%= link_to "Setting", "#", class: 'pure-button' %><br>
 				<%= link_to "Log Out", logout_path, method: :delete, class: 'pure-button' %>
 			<% else %>
 				<h2 class="pwn-font">Login</h2>
