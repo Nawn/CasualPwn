@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'pages#home'
 
+  post '/login' => 'sessions#new'
+
   scope '/user' do
     get 'new' => 'users#prep', as: :user_new
     get 'create' => 'users#assign_guild_user', as: :user_create
