@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   post '/login' => 'sessions#new'
+  delete '/logout' => 'sessions#destroy'
 
   scope '/user' do
     get 'new' => 'users#prep', as: :user_new

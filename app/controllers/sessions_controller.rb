@@ -1,4 +1,14 @@
 class SessionsController < ApplicationController
+
+	def destroy
+		if session[:guild_member_id]
+			session[:guild_member_id] = nil
+			flash[:notice] = "You have successfully logged out"
+		end
+
+		redirect_to root_path
+	end
+
 	def new
 		# Grab the user based on the username entered.
 		user_login = params.permit(:username, :password)
