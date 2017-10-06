@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'confirm' => 'users#confirm_login', as: :user_confirm
     patch 'confirm/:id' => 'users#confirm_login_save', as: :user_confirm_save
     get 'password' => 'users#password_form'
+    patch 'password/:id' => 'users#password_update'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

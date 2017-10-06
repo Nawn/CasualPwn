@@ -1,8 +1,18 @@
 class UsersController < ApplicationController
   include ApplicationHelper
+  include SessionsHelper
+
+  def password_update
+    
+  end
 
   def password_form
-    
+    if logged_in?
+      @this_user = GuildMember.find(session[:guild_member_id])
+    else
+      flash[:alert] = "You must be logged in to change your password."
+      redirect_to root_path
+    end
   end
   
   def prep
