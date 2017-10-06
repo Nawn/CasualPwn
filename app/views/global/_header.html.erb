@@ -49,7 +49,7 @@
 		<div class="sign-in-container" style="display:none;">
 			<% if logged_in? %>
 				<h2 class="pwn-font">My Account</h2>
-				<%= link_to "Change Password", "#", class: 'pure-button' %><br>
+				<%= link_to "Change Password", password_path, class: 'pure-button' %><br>
 				<%= link_to "Log Out", logout_path, method: :delete, class: 'pure-button' %>
 			<% else %>
 				<h2 class="pwn-font">Login</h2>

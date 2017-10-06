@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   include ApplicationHelper
+
+  def password_form
+    
+  end
   
   def prep
     new_user_params = get_prep_user_params

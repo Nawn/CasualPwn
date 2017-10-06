@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     patch 'create' => 'users#assign_guild_member', as: :user_assign
     get 'confirm' => 'users#confirm_login', as: :user_confirm
     patch 'confirm/:id' => 'users#confirm_login_save', as: :user_confirm_save
+    get 'password' => 'users#password_form'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
