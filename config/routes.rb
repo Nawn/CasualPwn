@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   end
 
   scope '/posts' do
-    get 'new' => 'posts#new'
+    get 'new' => 'posts#new', as: :posts
+    post 'new' => 'posts#create'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
