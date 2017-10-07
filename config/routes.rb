@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'pages#home'
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
     patch 'password/:id' => 'users#password_update'
   end
 
-  scope '/post' do
+  scope '/posts' do
     get 'new' => 'posts#new'
   end
 
