@@ -9,4 +9,13 @@ class PostsController < ApplicationController
   		redirect_to root_path
   	end
   end
+
+  def create
+  	current_user.posts.create(permit_post)
+  end
+
+  private
+  def permit_post
+  	params.require(:post).permit(:title, :content)
+  end
 end
