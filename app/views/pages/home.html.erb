@@ -1,5 +1,8 @@
 <h1 class="blue classy" style="font-size: 5em; text-align: center">The Wall</h1>
 <p style="text-align: center">Check out your guildie's latest posts!</p>
+<% if logged_in?  %>
+	<%= link_to "New Post!", posts_path, class: 'pure-button' %>
+<% end %>
 <hr>
 <article>
   <h2 style="text-align: center" class="blue">Example Guild Post #1!</h2>
