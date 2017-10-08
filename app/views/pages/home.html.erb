@@ -13,13 +13,17 @@
 	</article>	
 <% else %>
 	<% Post.all.each do |post| %>
-		<article>
-			<h2>
-				<%= post.title %>
+		<article class="blog-post">
+			<h2 class="blog-title blue classy">
+				<%= post.title %><br>
+				<span class="not-fancy">
+					Written by <%= post.guild_member.username %> on <%= post.created_at.strftime("%B %d, %Y") %>
+				</span>
 			</h2>
-			<p>
+			<p class="blog-content">
 				<%= post.content %>
 			</p>
 		</article>
+		<hr>
 	<% end %>
 <% end %>
