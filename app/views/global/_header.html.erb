@@ -13,15 +13,19 @@
     </div>
     <div class="center pure-g">
       <section class="pure-u-1-4 pure-u-sm-1-6 pure-u-lg-1-12 header__logo">
-	<%= image_tag("guild_logo.png", class: "pure-img") %>
+      	<%= link_to image_tag("guild_logo.png", class: "pure-img"), root_path %>
       </section>
       <section class="pure-u-3-4 pure-u-sm-1-2 pure-u-lg-1-4 header__title">
 	<div class="desktop-title">
-	  <h1 class="gold pwn-font"><span class="classy blue">Casual</span>Pwnography</h1>
+		<%= link_to root_path do %>
+	  		<h1 class="gold pwn-font"><span class="classy blue">Casual</span>Pwnography</h1>
+	  	<% end %>
 	</div>
 	<div class="mobile-title">
-	  <h1 class="blue"><span class="classy">Casual</span></h1>
-	  <h1 class="gold">Pwnography</h1>
+		<%= link_to root_path do %>
+		  <h1 class="blue"><span class="classy">Casual</span></h1>
+		  <h1 class="gold">Pwnography</h1>
+		<% end %>
 	</div>
       </section>
       <section class="pure-u-1 pure-u-lg-2-3 header__navbar">
