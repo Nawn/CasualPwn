@@ -1,6 +1,6 @@
 <%= form_for(@post) do |f| %>
 	Title: <%= f.text_field :title %>
-	Content: <br>
+	Content:
 	<%= f.text_area :content %>
 	Guild Only: <%= f.check_box(:guild_only) %>
 	<%= f.submit "SUBMIT!" %>
