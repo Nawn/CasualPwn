@@ -43,7 +43,10 @@
 		</nav>
 		<nav class="mobile-nav">
 		  <ul class="menu">
-		    <li><%= link_to "Sign In", "#", class: "pure-button" %></li>
+		  	<% sign_in_text = "Sign In" %>
+		  	<% sign_in_text = "Account" if logged_in? %>
+
+		    <li><%= link_to sign_in_text, "#", class: "pure-button signin-button" %></li>
 		    <% header_links.reverse.each do |array| %>
 		      <li><%= link_to array[0], array[1], class: "gold" %></li>
 		    <% end %>
