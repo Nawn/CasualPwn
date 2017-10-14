@@ -7,7 +7,9 @@
 	</fieldset>
 	<fieldset>
 		<legend class="blue classy">Content</legend>
-		<%= f.text_area :content %>
+		<div class="editor-container">
+			<%= f.text_area :content %>
+		</div>
 	</fieldset>
 	<%= f.submit "SUBMIT!", class: 'pure-button pwn-button' %>
 <% end %>

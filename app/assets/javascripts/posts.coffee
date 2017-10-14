@@ -5,5 +5,9 @@
 
 $(document).on('turbolinks:load', () ->
 	tinymce.remove('#post_content')
-	tinymce.init({selector: '#post_content'})
+	tinymce.init({
+		selector: '#post_content',
+		branding: false,
+		resize: true
+		})
 	)
