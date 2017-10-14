@@ -2,7 +2,7 @@
 <p class="home-header">Check out your guildie's latest posts!</p>
 <hr>
 <% if logged_in?  %>
-	<%= link_to "New Post!", posts_path, class: 'pure-button', style: 'float: right;margin-top: 1em;margin-right: 1em;' %>
+	<%= link_to "New Post!", posts_path, class: 'pure-button pwn-button', style: 'float: right;margin-top: 1em;margin-right: 1em;' %>
 <% end %>
 <% if Post.all.empty? %>
 	<article>
