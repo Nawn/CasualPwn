@@ -1,7 +1,7 @@
 <%= form_for(@post) do |f| %>
 	<fieldset>
 		<legend class="blue classy">Post Information</legend>
-		<%= f.label(:title, "Subject", class: 'classy post__new-title--label') %><br>
+		<%= f.label(:title, "Post Title", class: 'pwn-font post__new-title--label') %><br>
 		<%= f.text_field(:title, class: 'post__new-title classy blue') %>
 		<%= f.check_box(:guild_only) %> <span class="pwn-font post__new-title--label">Guild Only?</span>
 	</fieldset>
