@@ -1,3 +1,20 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post__new-title--label {
+	line-height: 0.25em;
+	color: #484848;
+}
+
+span.post__new-title--label {
+	line-height: 1.5em;
+}
+
+.post__new-title {
+	width: 95%;
+	border-radius: 2px;
+	display: block;
+	margin: 0.25em auto;
+	background-color: rgba(255,255,255,0.2);
+}

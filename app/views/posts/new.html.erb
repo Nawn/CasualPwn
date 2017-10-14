@@ -1,7 +1,13 @@
 <%= form_for(@post) do |f| %>
-	Title: <%= f.text_field :title %>
-	Content:
-	<%= f.text_area :content %>
-	Guild Only: <%= f.check_box(:guild_only) %>
+	<fieldset>
+		<legend class="blue classy">Post Information</legend>
+		<%= f.label(:title, "Subject", class: 'classy post__new-title--label') %><br>
+		<%= f.text_field(:title, class: 'post__new-title classy blue') %>
+		<%= f.check_box(:guild_only) %> <span class="pwn-font post__new-title--label">Guild Only?</span>
+	</fieldset>
+	<fieldset>
+		<legend class="blue classy">Content</legend>
+		<%= f.text_area :content %>
+	</fieldset>
 	<%= f.submit "SUBMIT!", class: 'pure-button pwn-button' %>
 <% end %>
