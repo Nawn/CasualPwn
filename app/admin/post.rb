@@ -11,5 +11,17 @@ ActiveAdmin.register Post do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  permit_params :title, :content, :guild_only
 
+  form title: 'Post' do |f|
+  	inputs 'Post Information' do 
+  		input :title
+  		input :guild_only
+  	end
+
+  	inputs "Post Content" do
+  		input :content, :input_html => {:class => 'tinymce'}
+  	end
+  	actions
+  end
 end
