@@ -13,7 +13,7 @@
 	  </p>
 	</article>	
 <% else %>
-	<% Post.all.each do |post| %>
+	<% Post.order(:created_at => :desc).each do |post| %>
 		<article class="blog-post">
 			<h2 class="blog-title blue classy">
 				<%= post.title %><br>
