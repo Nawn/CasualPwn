@@ -1,0 +1,16 @@
+<script src="<%= root_url %>tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+	tinymce.remove("<%= target %>");
+	tinymce.init({
+		selector: "<%= target %>",
+		branding: false,
+		resize: true,
+		height: 350,
+		content_css: '<%= root_url %>css/mce_content.css, https://fonts.googleapis.com/css?family=Acme|Tangerine:700" rel="stylesheet',
+		invalid_elements: 'script',
+		plugins: [
+    		"advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
+    		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+		    "table contextmenu directionality emoticons template textcolor paste fullpage textcolor colorpicker textpattern"
+  		]});
+</script>
