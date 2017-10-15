@@ -8,6 +8,13 @@ $(document).on('turbolinks:load', () ->
 	tinymce.init({
 		selector: '#post_content',
 		branding: false,
-		resize: true
+		resize: true,
+		height: 350,
+		invalid_elements: 'script',
+		plugins: [
+    		"advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
+    		"searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+		    "table contextmenu directionality emoticons template textcolor paste fullpage textcolor colorpicker textpattern"
+  		]
 		})
 	)
