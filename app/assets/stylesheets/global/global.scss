@@ -56,3 +56,19 @@ h1 {
     }
 }
 
+.notice {
+    color: green;
+    border: 2px solid green;
+}
+
+.alert {
+    color: red;
+    border: 2px solid red;
+}
+
+.notice, .alert {
+    text-align: center;
+    width: 80%;
+    margin: 1em auto;
+    background: rgba(255, 255, 255, 0.25);
+}
