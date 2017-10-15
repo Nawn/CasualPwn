@@ -18,9 +18,9 @@ ActiveAdmin.register Post do
     column :content do |the_content|
       strip_tags(the_content.content).truncate(150)
     end
-    
-    column :guild_only
 
+    column :guild_only
+    actions
   end
 
   form title: 'Post' do |f|
