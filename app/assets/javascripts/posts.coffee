@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', () ->
 		branding: false,
 		resize: true,
 		height: 350,
-		content_css: 'http://casualpwn.com/css/mce_content.css, https://fonts.googleapis.com/css?family=Acme|Tangerine:700" rel="stylesheet'
+		content_css: 'http://' + window.location.host + '/css/mce_content.css, https://fonts.googleapis.com/css?family=Acme|Tangerine:700',
 		invalid_elements: 'script',
 		plugins: [
     		"advlist autolink autosave link image lists charmap print preview hr anchor pagebreak",
