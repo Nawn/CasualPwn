@@ -13,6 +13,16 @@ ActiveAdmin.register Post do
 # end
   permit_params :title, :content, :guild_only
 
+  index do |post|
+    column :title
+    column :content do |the_content|
+      strip_tags(the_content.content).truncate(150)
+    end
+    
+    column :guild_only
+
+  end
+
   form title: 'Post' do |f|
   	inputs 'Post Information' do 
   		input :title
