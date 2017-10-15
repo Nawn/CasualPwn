@@ -39,6 +39,9 @@ gem 'jquery-rails'
 # Active Admin to give me an administrative backend
 gem 'activeadmin'
 
+# will_paginate for endless scrolling
+gem 'will_paginate', '~> 3.1.0'
+
 # Plus integrations with:
 gem 'devise'
 gem 'cancancan', '~> 2.0' # or cancancan
