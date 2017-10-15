@@ -23,16 +23,23 @@
   <body class="<%= controller_name %> <%= action_name %>">
     <%= render "global/header" %>
     <%= render "global/announcements" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
     <section class="yield-wrapper">
       <div class="center pure-g">
-	<div class="pure-u-3-4 display-left-container">
-	  <%= yield %>
-	</div>
-	<div class="pure-u-1-4">
-	  <%= render "global/aside" %>
-	</div>
+      	<div class="pure-u-3-4 display-left-container">
+          
+          <% if notice %>
+            <p class="notice"><%= notice %></p>  
+          <% end %>
+          <% if alert %>
+            <p class="alert"><%= alert %></p>
+          <% end %>
+
+      	  <%= yield %>
+      	</div>
+      	<div class="pure-u-1-4">
+      	  <%= render "global/aside" %>
+      	</div>
       </div>
     </section>
   </body>
