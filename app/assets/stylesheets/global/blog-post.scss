@@ -1,0 +1,24 @@
+.blog-post {
+	h1, h2, h3, h4, h5, h6 {
+		color: #195584;
+	}
+
+	h1, h2, h3 {
+		font-family: "Tangerine", cursive;
+		font-size: 2em;
+	}
+
+	p, div, blockquote, ul, ol, h4, h5, h6 {
+		font-family: "Acme", sans-serif
+	}
+
+	blockquote p,
+	blockquote {
+		color: #484848;
+	}
+
+	div {
+		border: 2px solid #195584;
+		padding: 0.5em;
+	}
+}

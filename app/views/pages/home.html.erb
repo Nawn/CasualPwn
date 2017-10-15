@@ -21,9 +21,9 @@
 					Written by <%= post.guild_member.username %> on <%= post.created_at.strftime("%B %d, %Y") %>
 				</span>
 			</h2>
-			<p class="blog-content">
+			<div class="blog-content">
 				<%= raw post.content %>
-			</p>
+			</div>
 		</article>
 		<hr>
 	<% end %>
