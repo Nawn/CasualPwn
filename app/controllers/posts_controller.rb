@@ -11,7 +11,13 @@ class PostsController < ApplicationController
   end
 
   def create
-  	current_user.posts.create(permit_post)
+  	if current_user.posts.create(permit_post)
+      flash[:notice] = "Success! View your post below: "
+    else
+      flash[:alert] = "ERROR: Something went wrong. Contact an officer for support."
+    end
+    
+    redirect_to root_path
   end
 
   private
