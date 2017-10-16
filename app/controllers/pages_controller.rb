@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
-  include SessionsHelper
 
   def home
-	  @posts = Post.order(:created_at => :desc).paginate(:page => params[:page], :per_page => 5)
+	  @posts = Post.order(:created_at => :desc).page params[:page]
   end
 end
