@@ -1,25 +1,29 @@
-<%= form_for(@this_user, url: user_confirm_save_path(@this_user), html: {:class => "pure-form pure-form-aligned"}) do |f| %>
-<fieldset>
-  <legend>Please select a Username and password</legend>
-  <div class="pure-control-group">
-    <%= f.label :discord_nick, "Discord Username" %>
-    <%= f.text_field(:discord_nick, :readonly => true) %>
-  </div>
-  <div class="pure-control-group">
-    <%= f.label :username, "User Name" %>
-    <%= f.text_field(:username) %>
-  </div>
-  <div class="pure-control-group">
-    <%= f.label :password, "Password" %>
-    <%= f.password_field(:password) %>
-  </div>
-  <div class="pure-control-group">
-    <%= f.label :password_confirmation, "Confirm Password" %>
-    <%= f.password_field(:password_confirmation) %>
-  </div>
-  <div class="pure-control-group">
-    <%= f.submit("Submit!") %>
-  </div>
-</fieldset>
-<% end %>
-
+<div class="user-registration-form">
+  <%= form_for(@this_user, url: user_confirm_save_path(@this_user), html: {:class => "pure-form pure-form-stacked"}) do |f| %>
+  <fieldset>
+    <legend>Please select a Username and password</legend>
+    <div class="pure-control-group">
+      <%= f.label :discord_nick, "Discord Username", class: 'pwn-font blue' %>
+      <%= f.text_field(:discord_nick, :readonly => true) %>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :username, "User Name", class: 'pwn-font blue' %>
+      <%= f.text_field(:username) %>
+      <span class="pure-form-message">Case Sensitive</span>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :password, "Password", class: 'pwn-font blue' %>
+      <%= f.password_field(:password) %>
+      <span class="pure-form-message">Case Sensitive</span>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :password_confirmation, "Confirm Password", class: 'pwn-font blue' %>
+      <%= f.password_field(:password_confirmation) %>
+      <span class="pure-form-message">Case Sensitive</span>
+    </div><br>
+    <div class="pure-control-group">
+      <%= f.submit("Submit!", class: 'pure-button pwn-button') %>
+    </div>
+  </fieldset>
+  <% end %>
+</div>
