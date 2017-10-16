@@ -20,7 +20,11 @@
 					<h2 class="blog-title blue classy">
 						<%= post.title %><br>
 						<span class="not-fancy">
-							Written by <%= post.guild_member.username %> on <%= post.created_at.strftime("%B %d, %Y") %>
+							<% if post.guild_member %>
+								Written by <%= post.guild_member.username %> on <%= post.created_at.strftime("%B %d, %Y") %>
+							<% else %>
+								Written by a <strong>DELETED</strong> on <%= post.created_at.strftime("%B %d, %Y") %>
+							<% end %>
 						</span>
 					</h2>
 					<div class="blog-content">
