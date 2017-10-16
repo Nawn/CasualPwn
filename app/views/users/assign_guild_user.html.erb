@@ -1,21 +1,23 @@
-<%= form_for(@this_user, url: user_assign_path(@this_user), html: {:class => "pure-form pure-form-aligned"}) do |f| %>
-<fieldset>
-  <legend>Please select the correspending Guild Wars 2 Member</legend>
-  <div class="pure-control-group">
-    <%= f.label :discord_id, "User Discord ID" %>
-    <%= f.text_field(:discord_id, :readonly => true) %>
-  </div>
-  <div class="pure-control-group">
-    <%= f.label :discord_nick, "User Discord Nickname" %>
-    <%= f.text_field(:discord_nick, :readonly => true) %>
-  </div>
-  <div class="pure-control-group">
-    <%= f.label :guild_wars_username, "Guild Wars Username" %>
-    <%= f.select(:guild_wars_username, options_for_select(@available_users.map { |user| user['name'] })) %>
-  </div>
-  <div class="pure-control-group">
-    <%= f.submit("Submit!") %>
-  </div>
-</fieldset>
-<% end %>
+<div class="user-registration-form">
+  <%= form_for(@this_user, url: user_assign_path(@this_user), html: {:class => "pure-form pure-form-stacked"}) do |f| %>
+  <fieldset>
+    <legend>Please select this user's Guild Wars 2 Account</legend>
+    <div class="pure-control-group">
+      <%= f.label :discord_id, "User Discord ID", class: 'pwn-font blue' %>
+      <%= f.text_field(:discord_id, :readonly => true) %>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :discord_nick, "User Discord Nickname", class: 'pwn-font blue' %>
+      <%= f.text_field(:discord_nick, :readonly => true) %>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :guild_wars_username, "Guild Wars Username", class: 'pwn-font blue' %>
+      <%= f.select(:guild_wars_username, options_for_select(@available_users.map { |user| user['name'] }), {}, {:class => 'pwn-font'}) %>
+    </div><br>
 
+    <div class="pure-control-group">
+      <%= f.submit("Submit!", class: 'pure-button pwn-button') %>
+    </div>
+  </fieldset>
+  <% end %>
+</div>
