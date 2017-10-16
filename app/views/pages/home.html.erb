@@ -15,18 +15,20 @@
 <% else %>
 	<div class="post-container">
 		<% @posts.each do |post| %>
-			<article class="blog-post">
-				<h2 class="blog-title blue classy">
-					<%= post.title %><br>
-					<span class="not-fancy">
-						Written by <%= post.guild_member.username %> on <%= post.created_at.strftime("%B %d, %Y") %>
-					</span>
-				</h2>
-				<div class="blog-content">
-					<%= raw post.content %>
-				</div>
-			</article>
-			<hr>
+			<% unless post.guild_only && !logged_in? %>
+				<article class="blog-post">
+					<h2 class="blog-title blue classy">
+						<%= post.title %><br>
+						<span class="not-fancy">
+							Written by <%= post.guild_member.username %> on <%= post.created_at.strftime("%B %d, %Y") %>
+						</span>
+					</h2>
+					<div class="blog-content">
+						<%= raw post.content %>
+					</div>
+				</article>
+				<hr>
+			<% end %>
 		<% end %>		
 	</div>
 <% end %>
