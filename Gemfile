@@ -43,6 +43,9 @@ gem 'activeadmin'
 gem 'devise'
 gem 'cancancan', '~> 2.0' # or cancancan
 
+# For Pagination
+gem "kaminari"
+
 # For REST APIs
 gem "rest-client"
 
