@@ -30,7 +30,7 @@ ActiveAdmin.register Post do
   	end
 
   	inputs "Post Content" do
-      render partial: 'blog_post_editor', locals: {target: '#post_content.tinymce'}
+      render partial: 'global/blog_post_editor', locals: {target: '#post_content.tinymce'}
   		input :content, :input_html => {:class => 'tinymce'}
   	end
   	actions

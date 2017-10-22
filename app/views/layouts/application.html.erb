@@ -22,7 +22,10 @@
 
   <body class="<%= controller_name %> <%= action_name %>">
     <%= render "global/header" %>
-    <%= render "global/announcements" %>
+    <% if @announce && @announce.created_at > 7.days.ago %>
+      <% puts @announce %>
+      <%= render :partial => "global/announcements", :locals => {obj: @announce} %>
+    <% end %>
 
     <section class="yield-wrapper">
       <div class="center pure-g">

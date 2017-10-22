@@ -1,0 +1,11 @@
+<article class="blog-post">
+	<h2 class="blog-title blue classy">
+		<%= @announcement.title %><br>
+		<span class="not-fancy">
+			Written on <%= @announcement.created_at.strftime("%B %d, %Y") %>
+		</span>
+	</h2>
+	<div class="blog-content">
+		<%= raw @announcement.content %>
+	</div>
+</article>

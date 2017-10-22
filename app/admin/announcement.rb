@@ -12,4 +12,14 @@ ActiveAdmin.register Announcement do
 #   permitted
 # end
 
+  permit_params :title, :content
+
+  form do |f|
+  	inputs :title
+
+	render partial: 'global/blog_post_editor', locals: {target: '#announcement_content.tinymce'}
+	input :content, :input_html => {:class => 'tinymce'}
+	actions
+  end
+
 end
