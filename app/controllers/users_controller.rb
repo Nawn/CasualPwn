@@ -158,6 +158,7 @@ class UsersController < ApplicationController
   def confirm_login_save
     updated_info = params.require(:guild_member).permit(:username, :password, :password_confirmation)
     @this_user = GuildMember.find(params[:id])
+    updated_info[:username] = updated_info[:username].downcase
     @this_user.update(updated_info)
     @this_user.update(registration_progress: 2)
     flash[:notice] = "Account credentials set!"

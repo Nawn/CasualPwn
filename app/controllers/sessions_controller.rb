@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
 	def new
 		# Grab the user based on the username entered.
 		user_login = params.permit(:username, :password)
-
+		user_login[:username] = user_login[:username].downcase
+		
 		@this_user = GuildMember.find_by(username: user_login[:username])
 
 		# Check if the user even exists
