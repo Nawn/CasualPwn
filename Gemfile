@@ -33,6 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use for update_ranks ever 15 mintues
+gem 'whenever', :require => false
+
 # Use jQuery
 gem 'jquery-rails'
 
