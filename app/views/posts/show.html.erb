@@ -1,0 +1,46 @@
+<% unless @post.guild_only && !logged_in? %>
+	<article class="blog-post">
+		<h2 class="blog-title blue classy">
+			<%= @post.title %><br>
+			<span class="not-fancy">
+				<% if @post.guild_member %>
+					Written by <%= @post.guild_member.username %> on <%= @post.created_at.strftime("%B %d, %Y") %>
+				<% else %>
+					Written by a <strong>DELETED</strong> on <%= @post.created_at.strftime("%B %d, %Y") %>
+				<% end %>
+			</span>
+		</h2>
+		<div class="blog-content">
+			<%= raw @post.content %>
+		</div>
+	</article>
+	<div class="share-social-media">
+		<div style="float:right">
+			<%= link_to "Open Post", posts_show_path(@post), class: "pwn-font", style: "text-decoration:none;" %>
+			<iframe src="https://www.facebook.com/plugins/share_button.php?href=<%= u "#{root_url}#{posts_show_path(@post)}" %>&layout=button&size=small&mobile_iframe=true&width=58&height=20&appId" width="58" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+			<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=<%= u "Checkout this guild post!" %>&url=<%= u "#{root_url[0..-2]}#{posts_show_path(@post)}" %>"><%= image_tag("tweet.png") %></a>
+		</div>
+	</div>
+	<hr>
+
+<% else %>
+	<article class="blog-post">
+		<h2 class="blog-title blue classy">
+			Sorry, Guild only.<br>
+			<span class="not-fancy">
+				Please login and try again
+			</span>
+		</h2>
+
+		<div class="blog-content">
+			<h1>Thanks! </h1>
+		</div>
+	</article>
+	<div class="share-social-media">
+		<div style="float:right">
+			<iframe src="https://www.facebook.com/plugins/share_button.php?href=<%= u "#{root_url}" %>&layout=button&size=small&mobile_iframe=true&width=58&height=20&appId" width="58" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+			<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=<%= u "Checkout this guild site!" %>&url=<%= u "#{root_url}" %>"><%= image_tag("tweet.png") %></a>
+		</div>
+	</div>
+	<hr>
+<% end %>

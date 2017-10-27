@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   include SessionsHelper
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def new
   	if logged_in?
   		@post = current_user.posts.new

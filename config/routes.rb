@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   scope '/posts' do
     get 'new' => 'posts#new', as: :posts
     post 'new' => 'posts#create'
+    get 'show/:id' => 'posts#show', as: :posts_show
   end
 
   resources :announcements, :only => [:show]
