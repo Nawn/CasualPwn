@@ -1,0 +1,32 @@
+.apply__contact,
+.apply__note {
+	label {
+		text-align: center;
+	}
+}
+
+.apply__contact {
+	input[type='text'] {
+		display: block;
+		width: 80%;
+		margin: 0 auto;
+		text-align: center;
+	}
+}
+
+.apply__note {
+	label {
+		margin: 1em 0em;
+	}
+	textarea#note {
+		width: 90%;
+		min-height: 15em;
+		display: block;
+		margin: 0 auto;
+	}
+}
+
+.apply__submit {
+	text-align: center;
+	margin: 1em 0em;
+}
