@@ -31,5 +31,13 @@ module Discord
 
 			member_to_update.roles = role_to_set
 		end
+
+		def new_applicant(discord_name, gw_name, note)
+			bot = Discordrb::Bot.new token: @api_key, client_id: @client_id
+
+			bot.run :async
+
+			bot.send_message(pull_from_global('discord_applications').to_i, "**NEW APPLICANT:**\n\n\nDISCORD NAME:\n`#{discord_name}`\n\nGUILD WARS NAME: \n`#{gw_name}`\n\nNote: \n```\n#{note}\n```")
+		end
 	end
 end

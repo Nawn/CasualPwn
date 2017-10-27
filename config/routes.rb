@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   get 'apply' => 'pages#apply'
+  post 'apply' => 'pages#applicant'
 
   resources :announcements, :only => [:show]
 
