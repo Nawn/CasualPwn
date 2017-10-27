@@ -1,5 +1,6 @@
 .announcement__container {
-    margin: 0;
+	box-sizing: border-box;
+    margin: 0 auto;
     padding: 0.125em;
     background-color: $casual-gold;
 }
