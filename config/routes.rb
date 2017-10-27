@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get 'show/:id' => 'posts#show', as: :posts_show
   end
 
+  get 'apply' => 'pages#apply'
+
   resources :announcements, :only => [:show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
