@@ -6,17 +6,17 @@
 			<div class="pure-g">
 				<div class="pure-u-1 pure-u-md-1-2">
 					<%= label_tag(:discord_name, "Discord Username", class: "pwn-font blue") %>
-					<%= text_field_tag(:discord_name, "", placeholder: "Discord#123") %>
+					<%= text_field_tag(:discord_name, "", placeholder: "Discord#123", class: "pwn-font") %>
 				</div>
 				<div class="pure-u-1 pure-u-md-1-2">
 					<%= label_tag(:gw_name, "GuildWars Username", class: "pwn-font blue") %>
-					<%= text_field_tag(:gw_name, "", placeholder: "GuildWars.123") %>
+					<%= text_field_tag(:gw_name, "", placeholder: "GuildWars.123", class: "pwn-font") %>
 				</div>
 			</div>
 		</div>
 		<div class="pure-u-1 apply__note">
 			<%= label_tag(:note, "Introduce Yourself:", class: "pwn-font blue") %>
-			<%= text_area_tag(:note, "", placeholder: "Tell us about yourself") %>
+			<%= text_area_tag(:note, "", placeholder: "Tell us about yourself", class: "pwn-font") %>
 		</div>
 		<div class="pure-u-1 apply__submit">
 			<%= submit_tag("Submit", class: "pure-button pwn-button") %>
