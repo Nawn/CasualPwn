@@ -26,6 +26,6 @@ class PostsController < ApplicationController
 
   private
   def permit_post
-  	params.require(:post).permit(:title, :content)
+  	params.require(:post).permit(:title, :content, :guild_only)
   end
 end
