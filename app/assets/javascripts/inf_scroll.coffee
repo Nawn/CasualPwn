@@ -7,25 +7,29 @@ $(document).on('turbolinks:load', (() ->
 		})
 
 	aside = $("section.aside")
-	topOfAside = aside.offset().top
-	height = aside.outerHeight()
-	showAside = true
-
-	$(window).scroll(() ->
-			if $(window).scrollTop() > (topOfAside + height)
-
-				if !showAside
-
+	if aside.length == 0
+		console.log("Not Signed In")
+	else
+		console.log("Signed in")
+		topOfAside = aside.offset().top
+		height = aside.outerHeight()
+		showAside = true
+	
+		$(window).scroll(() ->
+				if $(window).scrollTop() > (topOfAside + height)
+	
+					if !showAside
+	
+					else
+						$(".display-left-container").width("100%")
+						$("section.aside").hide()
+						showAside = false
 				else
-					$(".display-left-container").width("100%")
-					$("section.aside").hide()
-					showAside = false
-			else
-				if showAside
-
-				else
-					$(".display-left-container").attr("style", "")
-					$("section.aside").show()
-					showAside = true
-		)
+					if showAside
+	
+					else
+						$(".display-left-container").attr("style", "")
+						$("section.aside").show()
+						showAside = true
+			)
 	))
