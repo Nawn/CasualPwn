@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   include ApplicationHelper
 
   def home
-	  @posts = Post.order(:created_at => :desc).page(params[:page]).per(5)
+	  @posts = Post.order(:created_at => :desc).page(params[:page]).per(20)
 	  @announce = Announcement.last
   end
 

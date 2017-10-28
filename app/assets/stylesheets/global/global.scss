@@ -50,6 +50,7 @@ h1 {
 
 .display-left-container {
     position: relative;
+    transition: width 0.3s cubic-bezier(.06,.76,.15,1.39);
 
     h1, p {
 	padding: 0.15em 1em;
