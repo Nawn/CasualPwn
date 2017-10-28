@@ -24,10 +24,14 @@
 		&.share-social-media,
 		&.share-social-media div {
 			border: 0;
-		}
 
-		&.share-socia-media div {
-			padding: 0;
+			a {
+				margin: 0em 1em;
+
+				&:last-child {
+					margin-right: 0em;
+				}
+			}
 		}
 	}
 }
