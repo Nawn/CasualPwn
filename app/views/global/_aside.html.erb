@@ -1,26 +1,17 @@
 <section class="aside">
 
-  <% if logged_in? %>
-    <section class="aside__section resources__container">
-      <h3 class="blue" style="padding-top:1em;">Resources</h3>
-      <ul>
-        <li><%= link_to "GW2 Boss Timer", "http://www.gw2timer.com/", class: "pwn-font", target: "_blank" %></li>
-        <li><%= link_to "GW2 User Manual", "https://manual.guildwars2.com/en", class: "pwn-font", target: "_blank" %></li>
-        <li><%= link_to "GW2 Combat", "https://whyigame.wordpress.com/the-beginners-guide-to-movement-in-combat-guild-wars-2/", class: "pwn-font", target: "_blank"  %></li>
-        <li><%= link_to "GW2 Craft Power Leveling", "http://gw2crafts.net/", class: "pwn-font", target: "_blank" %></li>
-        <li><%= link_to "GW2 Craft Gold", "https://www.gw2spidy.com/", class: "pwn-font", target: "_blank" %></li>
-        <li><%= link_to "GW2 Trading Post", "https://www.gw2bltc.com/", class: "pwn-font", target: "_blank" %></li>
-        <li><%= link_to "GW2 Dungeons", "http://gw2dungeons.net/", class: "pwn-font", target: "_blank" %></li>
-      </ul>
-    </section>
-  <% else %>
-    <section class="aside__section resources__container">
-      <h3 class="blue" style="padding-top:1em;">About</h3>
-      <p class="pwn-font" style="text-align:center;padding:0em 1em;">
-        Casual Pwnography is a guild in Guild wars 2, Devona's Rest. We are an English speaking guild who play casually. 
-      </p>
-    </section>
-  <% end %>
+  <section class="aside__section resources__container">
+    <h3 class="blue" style="padding-top:1em;">Resources</h3>
+    <ul>
+      <li><%= link_to "GW2 Boss Timer", "http://www.gw2timer.com/", class: "pwn-font", target: "_blank" %></li>
+      <li><%= link_to "GW2 User Manual", "https://manual.guildwars2.com/en", class: "pwn-font", target: "_blank" %></li>
+      <li><%= link_to "GW2 Combat", "https://whyigame.wordpress.com/the-beginners-guide-to-movement-in-combat-guild-wars-2/", class: "pwn-font", target: "_blank"  %></li>
+      <li><%= link_to "GW2 Craft Power Leveling", "http://gw2crafts.net/", class: "pwn-font", target: "_blank" %></li>
+      <li><%= link_to "GW2 Craft Gold", "https://www.gw2spidy.com/", class: "pwn-font", target: "_blank" %></li>
+      <li><%= link_to "GW2 Trading Post", "https://www.gw2bltc.com/", class: "pwn-font", target: "_blank" %></li>
+      <li><%= link_to "GW2 Dungeons", "http://gw2dungeons.net/", class: "pwn-font", target: "_blank" %></li>
+    </ul>
+  </section>
   
   <section class="aside__section discord__container">
     <h3 class="blue">Who's Online?</h3>

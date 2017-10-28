@@ -28,14 +28,26 @@
 
   <body class="<%= controller_name %> <%= action_name %>">
     <%= render "global/header" %>
-    <% if @announce && @announce.created_at > 7.days.ago %>
-      <% puts @announce %>
+    <% if @announce && @announce.created_at > 7.days.ago && logged_in? %>
       <%= render :partial => "global/announcements", :locals => {obj: @announce} %>
+    <% end %>
+
+    <% unless logged_in? %>
+      <section class="announcement__container center">
+        <div>
+          <h3 style="text-align: center" class="blue pwn-font">About Casual Pwnography</h3>
+          <p style="text-align: center" class="pwn-font">
+            Casual Pwnography is a guild in Guild Wars 2, Devona's Rest. We are an English speaking guild who play all game modes casually!
+          </p>
+        </div>
+      </section>
     <% end %>
 
     <section class="yield-wrapper">
       <div class="center pure-g">
-      	<div class="pure-u-3-4 display-left-container">
+
+        <%  main_width = (logged_in? ? "pure-u-3-4" : "pure-u-1") %>
+      	<div class="<%= main_width %> display-left-container">
           
           <% if notice %>
             <p class="notice"><%= notice %></p>  
@@ -46,9 +58,11 @@
 
       	  <%= yield %>
       	</div>
-      	<div class="pure-u-1-4">
-      	  <%= render "global/aside" %>
-      	</div>
+        <% if logged_in? %>
+        	<div class="pure-u-1-4">
+        	  <%= render "global/aside" %>
+        	</div>
+        <% end %>
       </div>
     </section>
   </body>
