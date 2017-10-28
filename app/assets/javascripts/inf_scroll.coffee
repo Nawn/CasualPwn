@@ -3,4 +3,5 @@ $(document).on('turbolinks:load', (() ->
 		# Options
 		path: '.pagination .next a'
 		append: '.blog-post'
+		history: false
 		})))
