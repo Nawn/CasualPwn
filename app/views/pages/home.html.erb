@@ -2,6 +2,16 @@
 	<title>Casual Pwnography - Guild Wars 2</title>
 <% end %>
 
+<% unless logged_in? %>
+  <section class="center">
+    <div>
+      <h3 style="text-align: center" class="blue pwn-font">About Casual Pwnography</h3>
+      <p style="text-align: center">
+        <em>Casual Pwnography is a guild in Guild Wars 2, Devona's Rest. We are an English speaking guild who play all game modes casually!</em>
+      </p>
+    </div>
+  </section>
+<% end %>
 <h1 class="blue classy wall-header">The Wall<br><span class="not-fancy">What're you up to?</span></h1>
 <hr>
 <% if logged_in?  %>

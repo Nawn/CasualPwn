@@ -32,17 +32,6 @@
       <%= render :partial => "global/announcements", :locals => {obj: @announce} %>
     <% end %>
 
-    <% unless logged_in? %>
-      <section class="announcement__container center">
-        <div>
-          <h3 style="text-align: center" class="blue pwn-font">About Casual Pwnography</h3>
-          <p style="text-align: center" class="pwn-font">
-            Casual Pwnography is a guild in Guild Wars 2, Devona's Rest. We are an English speaking guild who play all game modes casually!
-          </p>
-        </div>
-      </section>
-    <% end %>
-
     <section class="yield-wrapper">
       <div class="center pure-g">
 

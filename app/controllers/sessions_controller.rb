@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 			if @logged_in
 				puts "\n\n LOGGED IN RETURNED SOMETHING\n\n"
 				session[:guild_member_id] = @logged_in.id
-				flash[:notice] = "Welcome, #{@logged_in.username}"
+				flash[:notice] = "Welcome, #{@logged_in.username.capitalize}"
 				redirect_to root_path
 			else
 				puts "\n\n LOGGED IN RETURNED NOTHING\n\n"
