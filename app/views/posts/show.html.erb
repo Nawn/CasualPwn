@@ -9,7 +9,7 @@
 			<%= @post.title %><br>
 			<span class="not-fancy">
 				<% if @post.guild_member %>
-					Written by <%= @post.guild_member.username %> on <%= @post.created_at.strftime("%B %d, %Y") %>
+					Written by <%= @post.guild_member.username.capitalize %> on <%= @post.created_at.strftime("%B %d, %Y") %>
 				<% else %>
 					Written by a <strong>DELETED</strong> on <%= @post.created_at.strftime("%B %d, %Y") %>
 				<% end %>
