@@ -1,3 +1,7 @@
+<% content_for :page_title do %>
+  <title>New User - Select Guild Wars 2 Account | Casual Pwnography - Guild Wars 2</title>
+<% end %>
+
 <div class="user-registration-form">
   <%= form_for(@this_user, url: user_confirm_save_path(@this_user), html: {:class => "pure-form pure-form-stacked"}) do |f| %>
   <fieldset>
