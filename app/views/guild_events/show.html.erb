@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @guild_event.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @guild_event.end_time %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @guild_event.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @guild_event.description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @guild_event.category %>
+</p>
+
+<p>
+  <strong>Guild only:</strong>
+  <%= @guild_event.guild_only %>
+</p>
+
+<p>
+  <strong>Roster size:</strong>
+  <%= @guild_event.roster_size %>
+</p>
+
+<%= link_to 'Edit', edit_guild_event_path(@guild_event) %> |
+<%= link_to 'Back', guild_events_path %>

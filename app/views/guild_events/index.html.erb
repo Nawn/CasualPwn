@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Guild Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Guild only</th>
+      <th>Roster size</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guild_events.each do |guild_event| %>
+      <tr>
+        <td><%= guild_event.start_time %></td>
+        <td><%= guild_event.end_time %></td>
+        <td><%= guild_event.title %></td>
+        <td><%= guild_event.description %></td>
+        <td><%= guild_event.category %></td>
+        <td><%= guild_event.guild_only %></td>
+        <td><%= guild_event.roster_size %></td>
+        <td><%= link_to 'Show', guild_event %></td>
+        <td><%= link_to 'Edit', edit_guild_event_path(guild_event) %></td>
+        <td><%= link_to 'Destroy', guild_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Guild Event', new_guild_event_path %>

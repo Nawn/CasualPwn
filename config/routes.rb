@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :guild_events
   get 'announcements/show'
 
   devise_for :admin_users, ActiveAdmin::Devise.config

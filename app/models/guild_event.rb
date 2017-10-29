@@ -1,0 +1,2 @@
+class GuildEvent < ApplicationRecord
+end

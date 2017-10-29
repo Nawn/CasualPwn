@@ -1,0 +1,52 @@
+<%= form_with(model: guild_event, local: true) do |form| %>
+  <% if guild_event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(guild_event.errors.count, "error") %> prohibited this guild_event from being saved:</h2>
+
+      <ul>
+      <% guild_event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.datetime_select :start_time, id: :guild_event_start_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_time %>
+    <%= form.datetime_select :end_time, id: :guild_event_end_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :guild_event_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :guild_event_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category, id: :guild_event_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :guild_only %>
+    <%= form.check_box :guild_only, id: :guild_event_guild_only %>
+  </div>
+
+  <div class="field">
+    <%= form.label :roster_size %>
+    <%= form.number_field :roster_size, id: :guild_event_roster_size %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
