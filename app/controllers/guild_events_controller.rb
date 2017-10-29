@@ -1,7 +1,13 @@
 class GuildEventsController < InheritedResources::Base
+  include SessionsHelper
   
   def new
-  	@guild_event = GuildEvent.new(start_time: Time.current, end_time: Time.current)
+  	if logged_in? 
+  		@guild_event = GuildEvent.new(start_time: Time.current, end_time: Time.current)
+  	else
+  		flash[:alert] = "You must be logged in to create a new event"
+  		redirect_to guild_events_path
+  	end
   end
 
   private
