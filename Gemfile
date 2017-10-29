@@ -55,6 +55,9 @@ gem "rest-client"
 # To send messages from our BOT
 gem "discordrb"
 
+# Guild events
+gem "simple_calendar", "~> 2.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
