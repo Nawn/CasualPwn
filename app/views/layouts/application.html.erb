@@ -13,6 +13,15 @@
     <!--[if gt IE 8]><!-->
     	<link rel="stylesheet" href="<%= root_url %>css/grids-responsive-min.css">
     <!--<![endif]-->
+
+    <%= javascript_include_tag "#{root_url}pick/lib/picker.js" %>
+    <%= javascript_include_tag "#{root_url}pick/lib/picker.date.js" %>
+    <%= javascript_include_tag "#{root_url}pick/lib/picker.time.js" %>
+
+    <%= stylesheet_link_tag "#{root_url}pick/css/default.css" %>
+    <%= stylesheet_link_tag "#{root_url}pick/css/default.date.css" %>
+    <%= stylesheet_link_tag "#{root_url}pick/css/default.time.css" %>
+
     
     <link href="https://fonts.googleapis.com/css?family=Acme|Tangerine:700" rel="stylesheet">
     <script src="<%= root_url %>tinymce/tinymce.min.js"></script>
