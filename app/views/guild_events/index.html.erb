@@ -1,6 +1,10 @@
-<p id="notice"><%= notice %></p>
+<% content_for :page_title do %>
+  <title>Guild Events | Casual Pwnography - Guild Wars 2</title>
+<% end %>
 
-<h1>Guild Events</h1>
+<h1 class="classy blue wall-header">Upcoming Guild Events</h1>
+
+<%= link_to 'New Guild Event', new_guild_event_path, class: "pure-button pwn-button" %>
 
 <table>
   <thead>
@@ -34,6 +38,15 @@
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Guild Event', new_guild_event_path %>
+<%= month_calendar events: @guild_events do |date, g_events| %>
+  <%= date %>
+
+  <% g_events.each do |g_event| %>
+    <div>    
+      <%= link_to g_event.title, g_event, class: 'pwn-font' %>
+    </div>
+  <% end %>
+<% end %>
+
+<br>
