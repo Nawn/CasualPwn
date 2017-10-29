@@ -1,3 +1,12 @@
+<%= javascript_include_tag "#{root_url}pick/lib/picker.js" %>
+<%= javascript_include_tag "#{root_url}pick/lib/picker.date.js" %>
+<%= javascript_include_tag "#{root_url}pick/lib/picker.time.js" %>
+
+<%= stylesheet_link_tag "#{root_url}pick/css/default.css" %>
+<%= stylesheet_link_tag "#{root_url}pick/css/default.date.css" %>
+<%= stylesheet_link_tag "#{root_url}pick/css/default.time.css" %>
+
+
 <%= form_with(model: guild_event, local: true) do |form| %>
   <% if guild_event.errors.any? %>
     <div id="error_explanation">
@@ -13,7 +22,7 @@
 
   <div class="field">
     <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, id: :guild_event_start_time %>
+    <%= form.text_field :start_time, id: :guild_event_start_time %>
   </div>
 
   <div class="field">
@@ -50,3 +59,7 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $("#guild_event_start_time").pickadate();
+</script>
