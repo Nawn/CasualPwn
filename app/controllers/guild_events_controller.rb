@@ -10,6 +10,12 @@ class GuildEventsController < InheritedResources::Base
   	end
   end
 
+  def index
+    super
+
+    @ongoing = GuildEvent.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now)
+  end
+
   private
 
     def guild_event_params
