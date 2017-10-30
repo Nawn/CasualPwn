@@ -9,7 +9,7 @@
 <% end %>
 
 <div style="padding: 1em">
-  <% if @ongoing %>
+  <% if @ongoing.count > 0 %>
     <h2 class="classy">Ongoing Guild Events</h2>
     <table class="pure-table pure-table-horizontal">
       <thead>
@@ -34,28 +34,30 @@
     </table>
   <% end %>
 
-  <h2 class="classy">Upcoming Guild Events</h2>
-  <table class="pure-table pure-table-horizontal">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Start Time</th>
-        <th>Category</th>
-        <th>Spaces Available</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @upcoming.each do |guild_event| %>
+  <% if @upcoming.count > 0 %>
+    <h2 class="classy">Upcoming Guild Events</h2>
+    <table class="pure-table pure-table-horizontal">
+      <thead>
         <tr>
-          <td><%= link_to guild_event.title, guild_event %></td>
-          <td>Event beginning in <%= distance_of_time_in_words(Time.zone.now, guild_event.start_time)  %></td>
-          <td><%= guild_event.category %></td>
-          <td><%= guild_event.roster_size %></td>
+          <th>Title</th>
+          <th>Start Time</th>
+          <th>Category</th>
+          <th>Spaces Available</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @upcoming.each do |guild_event| %>
+          <tr>
+            <td><%= link_to guild_event.title, guild_event %></td>
+            <td>Event beginning in <%= distance_of_time_in_words(Time.zone.now, guild_event.start_time)  %></td>
+            <td><%= guild_event.category %></td>
+            <td><%= guild_event.roster_size %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 
   <h2 class="classy">Month Calendar</h2>
   <%= month_calendar events: @guild_events do |date, g_events| %>
