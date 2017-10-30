@@ -1,5 +1,6 @@
 class GuildEvent < ApplicationRecord
-	before_save :combine_date_time
+	before_validation :combine_date_time
+	validates :title, :category, :roster_size, :start_time, :end_time, presence: true
 
 	def start_time_time
 		puts "Sending Start Time"
