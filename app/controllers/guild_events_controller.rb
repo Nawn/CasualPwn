@@ -39,6 +39,61 @@ class GuildEventsController < InheritedResources::Base
 
   end
 
+  def join
+
+    @this_event = GuildEvent.find(params[:id])
+
+    if @this_event
+      if logged_in?
+        if @this_event.roster.include? current_user.id
+          flash[:notice] = "You're already signed up!"
+        else
+          if @this_event.spaces_available == 0
+            flash[:alert] = "There are no spaces available"
+          else
+            @this_event.roster << current_user.id
+            @this_event.save(validate: false)
+            flash[:notice] = "Success! You have signed up."
+          end
+        end
+
+        redirect_to guild_events_path
+      else
+        flash[:alert] = "You must be signed in to join an event"
+        redirect_to guild_events_path
+      end
+    else
+      flash[:alert] = "Event does not exist"
+      redirect_to guild_events_path
+    end
+  end
+
+  def leave
+
+    @this_event = GuildEvent.find(params[:id])
+
+    if @this_event
+      if logged_in?
+        if @this_event.roster.include? current_user.id
+          @this_event.roster = @this_event.roster - [current_user.id]
+          @this_event.save(validate: false)
+          flash[:notice] = "Success! You have dropped out of this event."
+        else
+          flash[:alert] = "You weren't signed up for this event"
+        end
+
+        redirect_to guild_events_path
+      else
+        flash[:alert] = "You must be signed in to drop out of an event"
+        redirect_to guild_events_path
+      end
+    else
+      flash[:alert] = "Event does not exist"
+      redirect_to guild_events_path
+    end
+
+  end
+
   private
 
     def guild_event_params

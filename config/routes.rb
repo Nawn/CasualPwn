@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :guild_events
   scope 'guild_events' do
     get 'join/:id' => 'guild_events#join', as: :guild_event_join
-    get 'leave/:id' => 'guild_events#join', as: :guild_event_leave
+    get 'leave/:id' => 'guild_events#leave', as: :guild_event_leave
   end
   get 'announcements/show'
 
