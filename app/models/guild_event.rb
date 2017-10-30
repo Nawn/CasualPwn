@@ -1,3 +1,15 @@
+require "#{Rails.root}/lib/guild_wars_call.rb"
+
+def pull_from_global(tag)
+	result = GlobalSetting.find_by(tag: tag)
+
+	if result.nil?
+	  return "ERROR: tag #{tag} not found in GlobalSetting"
+	else
+	  return result.content
+	end
+end
+
 class GuildEvent < ApplicationRecord
 	serialize :roster, Array
 	belongs_to :guild_member
@@ -58,8 +70,40 @@ class GuildEvent < ApplicationRecord
 	end
 
 	def self.update_events
+		our_bot = Discord::Bot.new(pull_from_global('discord_token'), pull_from_global('discord_client').to_i)
+		
 		# The events within 30 minutes that have not been alerted
-		self.where('start_time > ?', Time.zone.now).where('start_time < ?', Time.zone.now + 30.minutes).where(notice: 0)
+		send_event_reminders = self.where('start_time > ?', Time.zone.now).where('start_time < ?', Time.zone.now + 30.minutes).where(notice: 0)
+		send_event_start = self.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now).where.not(notice: 2)
+		delete_events = self.where('end_time < ?', Time.zone.now - 6.months)
+
+		send_event_reminders.each do |remind_event|
+			remind_event.roster.each do |guild_member_id|
+				this_user = GuildMember.find(guild_member_id)
+
+				our_bot.message_user(this_user.discord_id, "REMINDER: You are to take part in a Guild Event called #{remind_event.title}, More Information: #{event_link(remind_event)}")
+			end
+
+			remind_event.notice = 1
+			remind_event.save(validate: false)
+		end
+
+		send_event_start.each do |remind_event|
+
+			remind_event.roster.each do |guild_member_id|
+				this_user = GuildMember.find(guild_member_id)
+
+				our_bot.message_user(this_user.discord_id, "REMINDER: The event #{remind_event.title} has begun! More information: #{event_link(remind_event)}")
+			end
+
+			remind_event.notice = 2
+			remind_event.save(validate: false)
+		end
+
+		delete_events.destroy_all
 	end
 
+	def event_link(guild_event)
+		"http://casualpwn.com/guild_events/#{guild_event.id}"
+	end
 end

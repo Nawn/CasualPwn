@@ -18,4 +18,8 @@ class PagesController < ApplicationController
     flash[:notice] = "Thank you for applying to the guild! We will reach out to you shortly."
     redirect_to root_path
   end
+
+  def test
+    render plain: GuildEvent.update_events
+  end
 end
