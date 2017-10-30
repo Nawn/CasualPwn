@@ -15,6 +15,7 @@ class GuildMember < ApplicationRecord
 
 	has_secure_password :validations => false
 	has_many :posts
+	has_many :guild_events
 
 	def self.update_ranks
 		our_guild = GuildWars::Guild.new(pull_from_global("guild_id"), pull_from_global("guild_leader_api"))

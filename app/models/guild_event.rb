@@ -1,4 +1,5 @@
 class GuildEvent < ApplicationRecord
+	belongs_to :guild_member
 	before_validation :combine_date_time
 	validates :title, :category, :roster_size, :start_time, :end_time, presence: true
 	validates :roster_size, numericality: {only_integer: true, greater_than_or_equal_to: 0}
