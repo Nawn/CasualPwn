@@ -27,6 +27,7 @@ class GuildEventsController < InheritedResources::Base
     @this_event = GuildEvent.new(guild_event_params)
     @this_event.guild_member = current_user
     @this_event.roster = [current_user.id]
+    @this_event.notice = 0
 
     if @this_event.save
       flash[:notice] = "Success! Your event has been created!"
