@@ -57,4 +57,9 @@ class GuildEvent < ApplicationRecord
 		self.end_time = "#{@end_time_date} #{@end_time_time}".in_time_zone(Time.zone.name)
 	end
 
+	def self.update_events
+		# The events within 30 minutes that have not been alerted
+		self.where('start_time > ?', Time.zone.now).where('start_time < ?', Time.zone.now + 30.minutes).where(notice: 0)
+	end
+
 end
