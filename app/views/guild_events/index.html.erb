@@ -38,7 +38,7 @@
               <td>N/A</td>
             <% end %>
             <% if logged_in? %>
-              <td><%= link_to "Signup", "#" %></td>
+              <td><%= event_link(guild_event, current_user) %></td>
             <% end %>
           </tr>
         <% end %>
@@ -75,7 +75,7 @@
               <td>N/A</td>
             <% end %>
             <% if logged_in? %>
-              <td><%= link_to "Signup", "#" %></td>
+              <td><%= event_link(guild_event, current_user) %></td>
             <% end %>
           </tr>
         <% end %>
