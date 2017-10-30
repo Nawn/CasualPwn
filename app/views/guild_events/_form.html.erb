@@ -1,3 +1,5 @@
+<% @categories = ["PvP", "WvWvW", "Dungeons", "Fractals", "Map Completion", "Guild Event", "Achievements", "Other"] %>
+
 <%= form_with(model: guild_event, local: true) do |form| %>
   <% if guild_event.errors.any? %>
     <div id="error_explanation">
@@ -11,45 +13,54 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.text_field :start_time_date, id: :guild_event_start_time_date %>
-    <%= form.text_field :start_time_time, id: :guild_event_start_time_time %>
-  </div>
+  <fieldset>
+    <legend>Event Information</legend>
 
-  <div class="field">
-    <%= form.label :end_time %>
-    <%= form.text_field :end_time_date, id: :guild_event_end_time_date %>
-    <%= form.text_field :end_time_time, id: :guild_event_end_time_time %>
-  </div>
+    <div class="pure-g">    
+      <div class="field pure-u-1">
+        <%= form.label :title %><br>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :guild_event_title %>
-  </div>
+        <%= form.text_field :title, id: :guild_event_title %>
+      </div>
+
+      <div class="field pure-u-1-2">
+        <%= form.label :start_time %><br>
+
+        <%= form.text_field :start_time_date, id: :guild_event_start_time_date, required: true %>
+        <%= form.text_field :start_time_time, id: :guild_event_start_time_time, required: true %>
+      </div>
+
+      <div class="field pure-u-1-2">
+        <%= form.label :end_time %><br>
+        <%= form.text_field :end_time_date, id: :guild_event_end_time_date, required: true %>
+        <%= form.text_field :end_time_time, id: :guild_event_end_time_time, required: true %>
+      </div>
+
+      <div class="field pure-u-1-2">
+        <%= form.label :category %><br>
+        <%= form.select :category, options_for_select(@categories), id: :guild_event_category %>
+      </div>
+
+      <div class="field pure-u-1-2">
+        <%= form.label :roster_size %><br>
+        <%= form.number_field :roster_size, id: :guild_event_roster_size %>
+      </div>
+
+      <div class="field pure-u-1-2">
+        <%= form.label :guild_only %>
+        <%= form.check_box :guild_only, id: :guild_event_guild_only %>
+      </div>
+    </div>
+  </fieldset>
+
 
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, id: :guild_event_description %>
   </div>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category, id: :guild_event_category %>
-  </div>
-
-  <div class="field">
-    <%= form.label :guild_only %>
-    <%= form.check_box :guild_only, id: :guild_event_guild_only %>
-  </div>
-
-  <div class="field">
-    <%= form.label :roster_size %>
-    <%= form.number_field :roster_size, id: :guild_event_roster_size %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit Guild Event", class: 'pure-button pwn-button' %>
   </div>
 <% end %>
 
