@@ -43,6 +43,12 @@ class GuildEvent < ApplicationRecord
 		@end_time_date = Date.parse(date).strftime("%Y-%m-%d")
 	end
 
+	def spaces_available
+		return "Unlim." if self.roster_size == 0
+
+		return self.roster_size
+	end
+
 	def combine_date_time
 		puts "Combining Start Times to DateTime"
 		self.start_time = "#{@start_time_date} #{@start_time_time}".in_time_zone(Time.zone.name)
