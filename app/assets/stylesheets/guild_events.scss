@@ -37,3 +37,11 @@
 	text-align: center;
 	margin: 1em 0em;
 }
+
+.do-not-hide-pagination {
+	.pagination {
+		opacity: 1;
+		text-align: center;
+		margin-top: 1em;
+	}
+}

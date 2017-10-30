@@ -81,7 +81,9 @@
         <% end %>
       </tbody>
     </table>
-    <%= paginate @upcoming %>
+    <div class="do-not-hide-pagination">
+      <%= paginate @upcoming %>
+    </div>
   <% end %>
 
   <h2 class="classy">Monthly Calendar</h2>

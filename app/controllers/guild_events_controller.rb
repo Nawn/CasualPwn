@@ -12,13 +12,13 @@ class GuildEventsController < InheritedResources::Base
 
   def index
     if logged_in?
-      @ongoing = GuildEvent.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now)
+      @ongoing = GuildEvent.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now).order(end_time: :asc)
       @upcoming = GuildEvent.where('start_time > ?', Time.zone.now).order(start_time: :asc).page(params[:page]).per(5)
     else
-      @ongoing = GuildEvent.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now).where(guild_only: false)
+      @ongoing = GuildEvent.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now).where(guild_only: false).order(end_time: :asc)
       @upcoming = GuildEvent.where('start_time > ?', Time.zone.now).order(start_time: :asc).where(guild_only: false).page(params[:page]).per(5)
     end
-    
+
     super
   end
 
