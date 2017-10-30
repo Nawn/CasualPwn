@@ -11,9 +11,9 @@ class GuildEventsController < InheritedResources::Base
   end
 
   def index
-    super
-
     @ongoing = GuildEvent.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now)
+    @upcoming = GuildEvent.where('start_time > ?', Time.zone.now)
+    super
   end
 
   private
