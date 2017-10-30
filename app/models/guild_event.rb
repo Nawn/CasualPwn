@@ -1,4 +1,5 @@
 class GuildEvent < ApplicationRecord
+	serialize :roster, Array
 	belongs_to :guild_member
 	before_validation :combine_date_time
 	validates :title, :category, :roster_size, :start_time, :end_time, presence: true
