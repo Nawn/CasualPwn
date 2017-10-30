@@ -56,3 +56,61 @@
 	width: 95%;
 	border: 0.125em solid $casual-blue;
 }
+
+.guild-event {
+	padding: 1em;
+}
+
+.event-title {
+	display:block;
+	margin: 0;
+}
+
+.event-author {
+	margin: 0;
+	font-style: italic;
+	color: #484848;
+}
+
+.display-left-container {
+	.pure-table thead {
+		color: white;
+		background-color: $casual-blue;
+	}
+
+	.simple-calendar {
+
+		td {
+			div {
+				margin-top: 0.25em;
+				border: 0.0625em solid $casual-blue;
+				background-color: rgba(255,255,255,0.2);
+				padding: 0.25em;
+			}
+		}
+
+		td.past {
+			opacity: 0.25;
+		}
+
+		td.today  {
+			div {
+				background-color: rgba(0,0,0,0.2);
+			}
+		}
+
+		td.prev-month,
+		td.next-month {
+			background-color: $casual-blue;
+			color: white;
+			div {
+				border: 0.0625em solid white;
+				background-color: rgba(0,0,0,0.2);
+			}
+
+			a {
+				color: white;
+			}
+		}
+	}
+}

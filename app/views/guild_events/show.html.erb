@@ -1,39 +1,85 @@
-<p id="notice"><%= notice %></p>
+<% content_for :page_title do %>
+  <title><%= @guild_event.title %> - Guild Event | Casual Pwnography - Guild Wars 2</title>
+<% end %>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @guild_event.start_time %>
-</p>
+<article class="guild-event">
+  <h2 class="event-title blue pwn-font"><%= @guild_event.title %></h2>
+  <span class="event-author">Created by <%= @guild_event.guild_member.username.capitalize %></span>
 
-<p>
-  <strong>End time:</strong>
-  <%= @guild_event.end_time %>
-</p>
+  <div class="pure-g">
+    <div class="pure-u-1-2">
+      <p>
+        <strong>Start time:</strong>
+        <%= @guild_event.start_time.strftime("%B %d, %Y @ %l:%M %p PST") %>
+      </p>
+    </div>
+    <div class="pure-u-1-2">
+      <p>
+        <strong>End time:</strong>
+        <%= @guild_event.end_time.strftime("%B %d, %Y @ %l:%M %p PST") %>
+      </p>
+    </div>
+    <div class="pure-u-1-3">
+      <p>
+        <strong>Category:</strong>
+        <%= @guild_event.category %>
+      </p>
+    </div>
+    <div class="pure-u-1-3">
+      <p>
+        <strong>Guild Only:</strong>
+        <%= @guild_event.guild_only ? "Yes" : "No" %>
+      </p>
+    </div>
+    <div class="pure-u-1-3">
+      <p>
+        <strong>Spaces Remaining:</strong>
+        <%= @guild_event.spaces_available %>
+      </p>
+    </div>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @guild_event.title %>
-</p>
+  <p><strong>Event Description:</strong></p>
+  <div class="blog-post">
+    <div>
+      <%= raw @guild_event.description %>  
+    </div>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @guild_event.description %>
-</p>
+  <div class="event__attending">
+    <p><strong>Attending:</strong></p>
+    <div class="attending" style="text-align: center">
+      <table class="pure-table pure-table-horizontal">
+        <thead>
+          <tr>
+              <th>Username</th>
+          </tr>
+        </thead>
 
-<p>
-  <strong>Category:</strong>
-  <%= @guild_event.category %>
-</p>
-
-<p>
-  <strong>Guild only:</strong>
-  <%= @guild_event.guild_only %>
-</p>
-
-<p>
-  <strong>Roster size:</strong>
-  <%= @guild_event.roster_size %>
-</p>
-
-<%= link_to 'Edit', edit_guild_event_path(@guild_event) %> |
-<%= link_to 'Back', guild_events_path %>
+        <tbody>
+          <% if @guild_event.roster_size == 0 #Unlimited Users %>
+            <% @guild_event.roster.each do |the_integer| %>
+              <tr>
+                <td><%= GuildMember.find(the_integer).username.capitalize %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <% @guild_event.roster_size.times do |the_number| %>
+              <% begin %>
+                <% current_member = GuildMember.find(@guild_event.roster[the_number]) %>
+                <tr>
+                  <td><%= current_member.username.capitalize %></td>
+                </tr>
+              <% rescue %>
+                <tr>
+                  <td style="color: #195584;">Available</td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div><br>
+  <%= link_to 'Back', guild_events_path, class: "pure-button pwn-button" %>
+</article>

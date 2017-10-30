@@ -18,9 +18,9 @@
     <iframe src="https://discordapp.com/widget?id=328738686650810369&theme=dark" allowtransparency="true" frameborder="0"></iframe>
   </section>
   <% if logged_in? %>
-    <% @aside_ongoing = GuildEvent.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now).order(end_time: :asc) %>
+    <% @aside_ongoing = GuildEvent.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now).order(end_time: :asc).limit(3) %>
   <% else %>
-    <% @aside_ongoing = GuildEvent.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now).where(guild_only: false).order(end_time: :asc) %>
+    <% @aside_ongoing = GuildEvent.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now).where(guild_only: false).order(end_time: :asc).limit(3) %>
   <% end %>
 
   <% if @aside_ongoing.count > 0 %>
