@@ -3,8 +3,9 @@
 <% end %>
 
 <h1 class="classy blue wall-header">Guild Events</h1>
+<hr>
 <% if logged_in? %>
-  <%= link_to 'New Guild Event', new_guild_event_path, class: "pure-button pwn-button" %>
+  <%= link_to 'New Guild Event', new_guild_event_path, class: "pure-button pwn-button home__new-post" %>
 <% end %>
 
 <div style="padding: 1em">
@@ -34,29 +35,29 @@
   <% end %>
 
   <h2 class="classy">Upcoming Guild Events</h2>
-    <table class="pure-table pure-table-horizontal">
-      <thead>
+  <table class="pure-table pure-table-horizontal">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Start Time</th>
+        <th>Category</th>
+        <th>Spaces Available</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @upcoming.each do |guild_event| %>
         <tr>
-          <th>Title</th>
-          <th>Start Time</th>
-          <th>Category</th>
-          <th>Spaces Available</th>
+          <td><%= link_to guild_event.title, guild_event %></td>
+          <td>Event beginning in <%= distance_of_time_in_words(Time.zone.now, guild_event.start_time)  %></td>
+          <td><%= guild_event.category %></td>
+          <td><%= guild_event.roster_size %></td>
         </tr>
-      </thead>
+      <% end %>
+    </tbody>
+  </table>
 
-      <tbody>
-        <% @upcoming.each do |guild_event| %>
-          <tr>
-            <td><%= link_to guild_event.title, guild_event %></td>
-            <td>Event beginning in <%= distance_of_time_in_words(Time.zone.now, guild_event.start_time)  %></td>
-            <td><%= guild_event.category %></td>
-            <td><%= guild_event.roster_size %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-
+  <h2 class="classy">Month Calendar</h2>
   <%= month_calendar events: @guild_events do |date, g_events| %>
     <%= date %>
 
