@@ -13,7 +13,7 @@ class GuildEvent < ApplicationRecord
 
 	def start_time_time=(time)
 		puts "Setting Start Time"
-		@start_time_time = Time.zone.parse(time).getutc.strftime("%H:%M:%S")
+		@start_time_time = Time.zone.parse(time).strftime("%H:%M:%S")
 	end
 
 	def start_time_date=(date)
@@ -33,7 +33,7 @@ class GuildEvent < ApplicationRecord
 
 	def end_time_time=(time)
 		puts "Setting End Time"
-		@end_time_time = Time.zone.parse(time).getutc.strftime("%H:%M:%S")
+		@end_time_time = Time.zone.parse(time).strftime("%H:%M:%S")
 	end
 
 	def end_time_date=(date)
@@ -43,10 +43,8 @@ class GuildEvent < ApplicationRecord
 
 	def combine_date_time
 		puts "Combining Start Times to DateTime"
-		puts "Start Date: #{@start_time_date} Start Time: #{@start_time_time}"
-		puts "End Date: #{@end_time_date} End Time: #{@end_time_time}"
-		self.start_time = DateTime.parse("#{@start_time_date} #{@start_time_time}")
-		self.end_time = DateTime.parse("#{@end_time_date} #{@end_time_time}")
+		self.start_time = "#{@start_time_date} #{@start_time_time}".in_time_zone(Time.zone.name)
+		self.end_time = "#{@end_time_date} #{@end_time_time}".in_time_zone(Time.zone.name)
 	end
 
 end
