@@ -18,6 +18,7 @@
           <th>Time Remaining</th>
           <th>Category</th>
           <th>Spaces Available</th>
+          <th>Event Creator</th>
           <% if logged_in? %>
             <th>Action</th>
           <% end %>
@@ -31,6 +32,12 @@
             <td>Event ending in <%= distance_of_time_in_words(Time.zone.now, guild_event.end_time)  %></td>
             <td><%= guild_event.category %></td>
             <td><%= guild_event.spaces_available %></td>
+            <% if guild_event.guild_member %>
+              <td><%= guild_event.guild_member.username.capitalize %></td>
+            <% else %>
+              <td>N/A</td>
+            <% end %>
+            
           </tr>
         <% end %>
       </tbody>
@@ -46,6 +53,7 @@
           <th>Start Time</th>
           <th>Category</th>
           <th>Spaces Available</th>
+          <th>Event Creator</th>
           <% if logged_in? %>
             <th>Action</th>
           <% end %>
@@ -55,10 +63,15 @@
       <tbody>
         <% @upcoming.each do |guild_event| %>
           <tr>
-            <td><%= link_to guild_event.title, guild_event %></td>
+            <td class="pwn-font"><%= link_to guild_event.title, guild_event %></td>
             <td>Event beginning in <%= distance_of_time_in_words(Time.zone.now, guild_event.start_time)  %></td>
             <td><%= guild_event.category %></td>
             <td><%= guild_event.spaces_available %></td>
+            <% if guild_event.guild_member %>
+              <td><%= guild_event.guild_member.username.capitalize %></td>
+            <% else %>
+              <td>N/A</td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

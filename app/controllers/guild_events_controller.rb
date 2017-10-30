@@ -16,6 +16,22 @@ class GuildEventsController < InheritedResources::Base
     super
   end
 
+  def create
+
+    @this_event = GuildEvent.new(guild_event_params)
+    @this_event.guild_member = current_user
+
+    if @this_event.save
+      flash[:notice] = "Success! Your event has been created!"
+      redirect_to @this_event
+    else  
+      flash[:alert] = "Hm, something went wrong."
+      redirect_to guild_events
+    end
+    
+
+  end
+
   private
 
     def guild_event_params
