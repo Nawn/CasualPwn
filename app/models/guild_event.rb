@@ -48,7 +48,7 @@ class GuildEvent < ApplicationRecord
 	def spaces_available
 		return "Unlim." if self.roster_size == 0
 
-		return self.roster_size
+		return self.roster_size - self.roster.size
 	end
 
 	def combine_date_time

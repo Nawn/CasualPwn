@@ -28,7 +28,7 @@
       <tbody>
         <% @ongoing.each do |guild_event| %>
           <tr>
-            <td><%= link_to guild_event.title, guild_event %></td>
+            <td class="pwn-font"><%= link_to guild_event.title, guild_event %></td>
             <td>Event ending in <%= distance_of_time_in_words(Time.zone.now, guild_event.end_time)  %></td>
             <td><%= guild_event.category %></td>
             <td><%= guild_event.spaces_available %></td>
@@ -37,7 +37,9 @@
             <% else %>
               <td>N/A</td>
             <% end %>
-            
+            <% if logged_in? %>
+              <td><%= link_to "Join", "#" %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
@@ -71,6 +73,9 @@
               <td><%= guild_event.guild_member.username.capitalize %></td>
             <% else %>
               <td>N/A</td>
+            <% end %>
+            <% if logged_in? %>
+              <td><%= link_to "Join", "#" %></td>
             <% end %>
           </tr>
         <% end %>
