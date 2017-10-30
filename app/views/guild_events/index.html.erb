@@ -38,7 +38,7 @@
               <td>N/A</td>
             <% end %>
             <% if logged_in? %>
-              <td><%= link_to "Join", "#" %></td>
+              <td><%= link_to "Signup", "#" %></td>
             <% end %>
           </tr>
         <% end %>
@@ -75,12 +75,13 @@
               <td>N/A</td>
             <% end %>
             <% if logged_in? %>
-              <td><%= link_to "Join", "#" %></td>
+              <td><%= link_to "Signup", "#" %></td>
             <% end %>
           </tr>
         <% end %>
       </tbody>
     </table>
+    <%= paginate @upcoming %>
   <% end %>
 
   <h2 class="classy">Monthly Calendar</h2>
