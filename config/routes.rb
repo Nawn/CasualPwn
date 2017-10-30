@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :guild_events
+  scope 'guild_events' do
+    get 'join/:id' => 'guild_events#join', as: :guild_event_join
+  end
   get 'announcements/show'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
