@@ -81,7 +81,7 @@ class GuildEvent < ApplicationRecord
 			remind_event.roster.each do |guild_member_id|
 				this_user = GuildMember.find(guild_member_id)
 
-				our_bot.message_user(this_user.discord_id, "REMINDER: You are to take part in a Guild Event called #{remind_event.title}, More Information: #{event_link(remind_event)}")
+				our_bot.message_user(this_user.discord_id, "REMINDER: You are to take part in a Guild Event called #{remind_event.title}, More Information: http://casualpwn.com/guild_events/#{guild_event.id}")
 			end
 
 			remind_event.notice = 1
@@ -93,7 +93,7 @@ class GuildEvent < ApplicationRecord
 			remind_event.roster.each do |guild_member_id|
 				this_user = GuildMember.find(guild_member_id)
 
-				our_bot.message_user(this_user.discord_id, "REMINDER: The event #{remind_event.title} has begun! More information: #{event_link(remind_event)}")
+				our_bot.message_user(this_user.discord_id, "REMINDER: The event #{remind_event.title} has begun! More information: http://casualpwn.com/guild_events/#{guild_event.id})
 			end
 
 			remind_event.notice = 2
@@ -101,9 +101,5 @@ class GuildEvent < ApplicationRecord
 		end
 
 		delete_events.destroy_all
-	end
-
-	def event_link(guild_event)
-		"http://casualpwn.com/guild_events/#{guild_event.id}"
 	end
 end
