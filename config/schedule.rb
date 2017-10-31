@@ -22,3 +22,7 @@
 every 15.minutes do # 1.minute 1.day 1.week 1.month 1.year is also supported
   runner "GuildMember.update_ranks"
 end
+
+every 5.minutes do
+  runner "GuildEvent.update_events"
+end
