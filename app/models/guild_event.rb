@@ -81,7 +81,7 @@ class GuildEvent < ApplicationRecord
 			remind_event.roster.each do |guild_member_id|
 				this_user = GuildMember.find(guild_member_id)
 
-				our_bot.message_user(this_user.discord_id, "REMINDER: You are to take part in a Guild Event called #{remind_event.title}, More Information: http://casualpwn.com/guild_events/#{guild_event.id}")
+				our_bot.message_user(this_user.discord_id, "REMINDER: You are to take part in a Guild Event called #{remind_event.title}, More Information: http://casualpwn.com/guild_events/#{remind_event.id}")
 			end
 
 			remind_event.notice = 1
@@ -93,7 +93,7 @@ class GuildEvent < ApplicationRecord
 			remind_event.roster.each do |guild_member_id|
 				this_user = GuildMember.find(guild_member_id)
 
-				our_bot.message_user(this_user.discord_id, "REMINDER: The event #{remind_event.title} has begun! More information: http://casualpwn.com/guild_events/#{guild_event.id})
+				our_bot.message_user(this_user.discord_id, "REMINDER: The event #{remind_event.title} has begun! More information: http://casualpwn.com/guild_events/#{remind_event.id}")
 			end
 
 			remind_event.notice = 2
