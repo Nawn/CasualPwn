@@ -114,3 +114,9 @@
 		}
 	}
 }
+
+@media screen and (max-width: 48em) {
+	.calendar-container {
+		display: none;
+	}
+}

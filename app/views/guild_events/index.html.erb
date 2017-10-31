@@ -86,17 +86,18 @@
     </div>
   <% end %>
 
-  <h2 class="classy">Monthly Calendar</h2>
-  <%= month_calendar events: @guild_events do |date, g_events| %>
-    <%= date %>
+  <div class="calendar-container">
+    <h2 class="classy">Monthly Calendar</h2>
+    <%= month_calendar events: @guild_events do |date, g_events| %>
+      <%= date %>
 
-    <% g_events.each do |g_event| %>
-      <div>    
-        <%= link_to g_event.title, g_event, class: 'pwn-font' %>
-      </div>
+      <% g_events.each do |g_event| %>
+        <div>    
+          <%= link_to g_event.title, g_event, class: 'pwn-font' %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-
+  </div>
   <br>
 </div>
 
