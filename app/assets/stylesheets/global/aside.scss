@@ -36,3 +36,14 @@
         margin: 0 auto;
     }
 }
+
+@media screen and (max-width: 64em) {
+    #full-content-container {
+        width: 100%;
+    }
+
+    #aside-content-container {
+        height: 0;
+        overflow: hidden;
+    }
+}

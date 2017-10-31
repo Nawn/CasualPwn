@@ -45,7 +45,7 @@
       <div class="center pure-g">
 
         <%  main_width = (logged_in? ? "pure-u-3-4" : "pure-u-1") %>
-      	<div class="<%= main_width %> display-left-container">
+      	<div class="<%= main_width %> display-left-container" id="full-content-container">
           
           <% if notice %>
             <p class="notice"><%= notice %></p>  
@@ -57,7 +57,7 @@
       	  <%= yield %>
       	</div>
         <% if logged_in? %>
-        	<div class="pure-u-1-4">
+        	<div class="pure-u-1-4" id="aside-content-container">
         	  <%= render "global/aside" %>
         	</div>
         <% end %>
