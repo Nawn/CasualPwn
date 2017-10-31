@@ -19,7 +19,4 @@ class PagesController < ApplicationController
     redirect_to root_path
   end
 
-  def test
-    render plain: GuildEvent.update_events
-  end
 end
