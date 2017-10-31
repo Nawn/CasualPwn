@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'pages#home'
 
+  get 'resources' => 'pages#resources'
+
   post '/login' => 'sessions#new'
   delete '/logout' => 'sessions#destroy'
 

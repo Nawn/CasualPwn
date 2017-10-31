@@ -45,6 +45,9 @@
 		  	<% sign_in_text = "Account" if logged_in? %>
 
 		    <li><%= link_to sign_in_text, "javascript:void()", class: "pure-button signin-button" %></li>
+		    <% if logged_in? %>
+		    	<li><%= link_to "Resources", resources_path, class: "gold" %></li>
+		    <% end %>
 		    <% header_links.reverse.each do |array| %>
 		      <li><%= link_to array[0], array[1], class: "gold" %></li>
 		    <% end %>
