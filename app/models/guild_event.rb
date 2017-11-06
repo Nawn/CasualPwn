@@ -70,12 +70,14 @@ class GuildEvent < ApplicationRecord
 	end
 
 	def self.update_events
-		our_bot = Discord::Bot.new(pull_from_global('discord_token'), pull_from_global('discord_client').to_i)
-		
 		# The events within 30 minutes that have not been alerted
 		send_event_reminders = self.where('start_time > ?', Time.zone.now).where('start_time < ?', Time.zone.now + 30.minutes).where(notice: 0)
 		send_event_start = self.where('start_time < ?', Time.zone.now).where('end_time > ?', Time.zone.now).where.not(notice: 2)
 		delete_events = self.where('end_time < ?', Time.zone.now - 6.months)
+
+		if send_event_reminders.count > 0 || send_event_start.count > 0
+			our_bot = Discord::Bot.new(pull_from_global('discord_token'), pull_from_global('discord_client').to_i)
+		end
 
 		send_event_reminders.each do |remind_event|
 			remind_event.roster.each do |guild_member_id|
